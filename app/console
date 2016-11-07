@@ -1,0 +1,34 @@
+#!/usr/bin/env php
+<?php
+/*
+ * This file is part of the TMS Sync package.
+ *
+ * (c) Matthias Vandermaesen <matthias@colada.be>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+// set to run indefinitely if needed
+set_time_limit(0);
+
+// Set the default timezone
+date_default_timezone_set('Europe/Brussels');
+
+// Include the Composer autoloader.
+require_once __DIR__ . '/../vendor/autoload.php';
+
+// Import the classes of the Dependency Injection component we'll use.
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Reference;
+use Symfony\Component\Config\FileLocator;
+use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
+
+// Load the configuration and the container.
+$container = new ContainerBuilder();
+$loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/config'));
+$loader->load('services.yml');
+
+// Run the application
+$main = $container->get('tmssync.main');
+$main->run();

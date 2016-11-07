@@ -1,0 +1,8 @@
+services:
+  tmssync.main:
+    class: Flemishartcollection\TMSSync\Main
+    arguments: ['@console.application', '@flemishartcollection.exporter']
+  flemishartcollection.exporter:
+    class: Flemishartcollection\TMSSync\Exporter
+  console.application:
+    class: Symfony\Component\Console\Application
