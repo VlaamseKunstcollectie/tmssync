@@ -1,0 +1,23 @@
+{
+    "name":"flemishartcollection/tmssync",
+    "description": "Export data from TMS to MySQL",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Matthias Vandermaesen",
+            "email": "matthias@colada.be"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "symfony/console": "~2.5",
+        "symfony/dependency-injection": "~2.5",
+        "symfony/config": "~2.5",
+        "symfony/yaml": "~2.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Flemishartcollection\\TMSSync\\": "src/Flemishartcollection/TMSSync/"
+        }
+    }
+}
