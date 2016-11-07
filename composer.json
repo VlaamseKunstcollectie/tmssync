@@ -13,7 +13,8 @@
         "symfony/console": "~2.5",
         "symfony/dependency-injection": "~2.5",
         "symfony/config": "~2.5",
-        "symfony/yaml": "~2.5"
+        "symfony/yaml": "~2.5",
+        "doctrine/dbal": "v2.5.4"
     },
     "autoload": {
         "psr-4": {
