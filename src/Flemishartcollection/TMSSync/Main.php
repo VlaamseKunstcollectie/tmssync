@@ -11,6 +11,7 @@ namespace Flemishartcollection\TMSSync;
 
 use Symfony\Component\Console\Application;
 use Flemishartcollection\TMSSync\Exporter;
+use Flemishartcollection\TMSSync\Installer;
 
 /**
  * Main class
@@ -20,13 +21,23 @@ class Main {
 
     protected $exporter;
 
-    public function __construct(Application $application, Exporter $exporter) {
+    protected $installer;
+
+    public function __construct(Application $application) {
         $this->app = $application;
+    }
+
+    public function setExporter(Exporter $exporter) {
         $this->exporter = $exporter;
+    }
+
+    public function setInstaller(Installer $installer) {
+        $this->installer = $installer;
     }
 
     public function run() {
         $this->app->add($this->exporter);
+        $this->app->add($this->installer);
         $this->app->run();
     }
 }

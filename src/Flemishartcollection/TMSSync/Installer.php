@@ -13,13 +13,13 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class Exporter extends Command {
+class Installer extends Command {
     /**
      * {@inheritdoc}
      */
     protected function configure() {
-        $this->setName('tmssync:export')
-            ->setDescription('Export data from TMS to MySQL');
+        $this->setName('tmssync:install')
+            ->setDescription('Installs the MySQL database schema.');
     }
 
     /**

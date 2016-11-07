@@ -1,8 +1,13 @@
 services:
   tmssync.main:
     class: Flemishartcollection\TMSSync\Main
-    arguments: ['@console.application', '@flemishartcollection.exporter']
+    arguments: ['@console.application']
+    calls:
+      - [setInstaller, ['@flemishartcollection.installer']]
+      - [setExporter, ['@flemishartcollection.exporter']]
   flemishartcollection.exporter:
     class: Flemishartcollection\TMSSync\Exporter
+  flemishartcollection.installer:
+    class: Flemishartcollection\TMSSync\Installer
   console.application:
     class: Symfony\Component\Console\Application
