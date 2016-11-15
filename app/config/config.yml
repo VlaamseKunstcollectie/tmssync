@@ -1,0 +1,7 @@
+params:
+    mysql:
+      host: localhost
+      driver: pdo_mysql
+      dbname: database
+      user: username
+      password: password

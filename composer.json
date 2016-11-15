@@ -13,12 +13,14 @@
         "symfony/console": "~2.5",
         "symfony/dependency-injection": "~2.5",
         "symfony/config": "~2.5",
-        "symfony/yaml": "~2.5",
+        "symfony/yaml": "^3.1",
         "doctrine/dbal": "v2.5.4"
     },
     "autoload": {
         "psr-4": {
-            "Flemishartcollection\\TMSSync\\": "src/Flemishartcollection/TMSSync/"
+            "Flemishartcollection\\TMSSync\\": "src/Flemishartcollection/TMSSync/",
+            "Flemishartcollection\\TMSSync\\Database\\": "src/Flemishartcollection/TMSSync/Database",
+            "Flemishartcollection\\TMSSync\\Configuration\\": "src/Flemishartcollection/TMSSync/Configuration"
         }
     }
 }

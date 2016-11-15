@@ -9,5 +9,17 @@ services:
     class: Flemishartcollection\TMSSync\Exporter
   flemishartcollection.installer:
     class: Flemishartcollection\TMSSync\Installer
+    calls:
+      - [setConnection, ['@flemishartcollection.database.connection']]
+  flemishartcollection.database.connection:
+    class: Flemishartcollection\TMSSync\Database\Connection
+    arguments: ['@flemishartcollection.configuration.configuration']
+  flemishartcollection.configuration.configuration:
+    class: Flemishartcollection\TMSSync\Configuration\Configuration
+    arguments: ['@symfony.component.config.definition.processor', '@flemishartcollection.configuration.databaseconfiguration']
+  flemishartcollection.configuration.databaseconfiguration:
+    class: Flemishartcollection\TMSSync\Configuration\DatabaseConfiguration
   console.application:
     class: Symfony\Component\Console\Application
+  symfony.component.config.definition.processor:
+    class: Symfony\Component\Config\Definition\Processor

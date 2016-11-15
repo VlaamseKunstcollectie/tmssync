@@ -12,8 +12,14 @@ namespace Flemishartcollection\TMSSync;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Flemishartcollection\TMSSync\Database\Connection;
 
 class Installer extends Command {
+
+    public function setConnection(Connection $connection) {
+        $connection->getConnection();
+    }
+
     /**
      * {@inheritdoc}
      */
