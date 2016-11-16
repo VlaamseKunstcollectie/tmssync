@@ -41,23 +41,11 @@ class Exporter extends Command {
      * {@inheritdoc}
      */
     protected function execute(InputInterface $input, OutputInterface $output) {
-        $formatter = $this->getHelper('formatter');
-        $formattedLine = $formatter->formatSection(
-            'SomeSection',
-            'Here is some message related to that section'
-        );
-        $output->writeln($formattedLine);
-
-        $errorMessages = array('Error!', 'Something went wrong');
-        $formattedBlock = $formatter->formatBlock($errorMessages, 'error');
-        $output->writeln($formattedBlock);
-
         // Truncate all Destination database tables.
-        // $this->destination->truncate();
+        $this->destination->truncate();
 
-        // Fetch data from Source database tables
-
-        // Write Source database tables to temp CSV files
+        // Fetch data from Source database tables and write to temp CSV files
+        $this->source->fetch();
 
         // Read out CSV files and store in Destination database tables
 

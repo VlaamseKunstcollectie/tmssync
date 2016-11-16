@@ -11,9 +11,11 @@ namespace Flemishartcollection\TMSSync\Database;
 
 use Exception;
 use Doctrine\DBAL\Schema\Schema;
+use League\Csv\Writer;
 use Flemishartcollection\TMSSync\Database\Connection;
 use Flemishartcollection\TMSSync\Database\DatabaseInterface;
 use Flemishartcollection\TMSSync\Configuration\Configuration as Parameters;
+use Flemishartcollection\TMSSync\Filesystem\CSV;
 
 class Source implements DatabaseInterface {
 
@@ -29,10 +31,21 @@ class Source implements DatabaseInterface {
         $this->connection = $connection->getConnection('mssql');
     }
 
-    public function fetch($tableName) {
-        // Parameters => mapping!!
+    public function fetch() {
+        $mappings = $this->parameters['mapping'];
+        $tables = $this->parameters['tables'];
 
-        // Fetch all records from the entire table and write them to a CSV
-        // file
+        foreach ($mappings as $mapping) {
+            $destination = $mapping['destination'];
+            if (isset($tables[$destination])) {
+                $header = array_map(function ($props) {
+                    return $props['name'];
+                }, $tables[$destination]['columns']);
+
+                $csv = new CSV();
+                $csv->createCSV($destination);
+                $csv->setHeader($header);
+            }
+        }
     }
 }

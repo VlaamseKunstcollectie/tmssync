@@ -23,7 +23,8 @@
         "psr-4": {
             "Flemishartcollection\\TMSSync\\": "src/Flemishartcollection/TMSSync/",
             "Flemishartcollection\\TMSSync\\Database\\": "src/Flemishartcollection/TMSSync/Database",
-            "Flemishartcollection\\TMSSync\\Configuration\\": "src/Flemishartcollection/TMSSync/Configuration"
+            "Flemishartcollection\\TMSSync\\Configuration\\": "src/Flemishartcollection/TMSSync/Configuration",
+            "Flemishartcollection\\TMSSync\\Filesystem\\": "src/Flemishartcollection/TMSSync/Filesystem"
         }
     }
 }

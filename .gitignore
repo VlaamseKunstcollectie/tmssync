@@ -1,3 +1,4 @@
 vendor/
 app/config/config.yml
 app/config/schema.yml
+app/files/*

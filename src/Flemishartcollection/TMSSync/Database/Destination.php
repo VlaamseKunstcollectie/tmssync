@@ -36,25 +36,28 @@ class Destination implements DatabaseInterface {
     /**
      * Truncate an entire table
      */
-    public function truncate($tableName) {
-        $this->connection->beginTransaction();
-        try {
-            $this->connection->query('SET FOREIGN_KEY_CHECKS=0');
-            $this->connection->query(sprintf('DELETE FROM %s', $tableName));
-            $this->connection->query('SET FOREIGN_KEY_CHECKS=1');
-            $this->connection->commit();
-        } catch (Exception $e) {
-            $this->connection->rollback();
-            throw $e; // bubble up to command
-        }
+    public function truncate() {
+        $tables = array_keys($this->parameters['tables']);
+        foreach ($tables as $tableName) {
+            $this->connection->beginTransaction();
+            try {
+                $this->connection->query('SET FOREIGN_KEY_CHECKS=0');
+                $this->connection->query(sprintf('DELETE FROM %s', $tableName));
+                $this->connection->query('SET FOREIGN_KEY_CHECKS=1');
+                $this->connection->commit();
+            } catch (Exception $e) {
+                $this->connection->rollback();
+                throw $e; // bubble up to command
+            }
 
-        $this->connection->beginTransaction();
-        try {
-            $this->connection->query(sprintf('ALTER TABLE %s AUTO_INCREMENT = 1', $tableName));
-            $this->connection->commit();
-        } catch (Exception $e) {
-            $this->connection->rollback();
-            throw $e; // bubble up to command
+            $this->connection->beginTransaction();
+            try {
+                $this->connection->query(sprintf('ALTER TABLE %s AUTO_INCREMENT = 1', $tableName));
+                $this->connection->commit();
+            } catch (Exception $e) {
+                $this->connection->rollback();
+                throw $e; // bubble up to command
+            }
         }
 
         return true;

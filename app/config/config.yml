@@ -12,5 +12,4 @@ params:
       user: root
       password: root
     mapping:
-      - { source: foo, destination: bar}
-      - { source: fooz, destination: baz}
+      - { source: tombstone, destination: objects }
