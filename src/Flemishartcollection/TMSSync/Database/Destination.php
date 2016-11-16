@@ -14,6 +14,7 @@ use Doctrine\DBAL\Schema\Schema;
 use Flemishartcollection\TMSSync\Database\Connection;
 use Flemishartcollection\TMSSync\Database\DatabaseInterface;
 use Flemishartcollection\TMSSync\Configuration\Configuration as Parameters;
+use Flemishartcollection\TMSSync\Filesystem\CSVReader;
 
 class Destination implements DatabaseInterface {
 
@@ -29,8 +30,55 @@ class Destination implements DatabaseInterface {
         $this->connection = $connection->getConnection('mysql');
     }
 
-    public function insert() {
-        // Insert a new line into the database table!!
+    /**
+     * Dump tables from CSV to MySQL destination
+     */
+    public function dump() {
+        $mappings = $this->parameters['mapping'];
+        $tables = $this->parameters['tables'];
+
+        foreach ($mappings as $mapping) {
+            $destination = $mapping['destination'];
+
+            if (isset($tables[$destination])) {
+                // Fetch columns from config
+                $columns = array_map(function ($props) {
+                    return $props['name'];
+                }, $tables[$destination]['columns']);
+                $cols = implode(',', $columns);
+
+                // Set placeholders values
+                $placeholders = array_map(function ($props) {
+                    return ':' . $props['name'];
+                }, $tables[$destination]['columns']);
+                $values = implode(',', $placeholders);
+
+                $sql = sprintf("INSERT INTO %s (%s) VALUES (%s)", $destination, $cols, $values);
+
+                // Open up the associated CSV file for the selected destination
+                $csv = new CSVReader();
+                $reader = $csv->get($destination);
+                $reader->setOffset(1);
+                $results = $reader->fetch();
+
+                // Read out each row and store it into the databse
+                foreach ($results as $row) {
+                    try {
+                        $this->connection->beginTransaction();
+                        $sth = $this->connection->prepare($sql);
+                        $placeholders = array_values($placeholders);
+                        foreach ($row as $key => $value) {
+                            $sth->bindValue($placeholders[$key], $value);
+                        }
+                        $sth->execute();
+                        $this->connection->commit();
+                    } catch (Exception $e) {
+                        $this->connection->rollback();
+                        throw $e; // bubble up to command
+                    }
+                }
+            }
+        }
     }
 
     /**

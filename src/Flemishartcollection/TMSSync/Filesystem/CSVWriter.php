@@ -13,7 +13,7 @@ use League\Flysystem\Filesystem;
 use League\Flysystem\Adapter\Local;
 use League\Csv\Writer;
 
-class CSV {
+class CSVWriter {
     private $filesystem;
 
     private $basepath;

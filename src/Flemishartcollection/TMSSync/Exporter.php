@@ -45,9 +45,10 @@ class Exporter extends Command {
         $this->destination->truncate();
 
         // Fetch data from Source database tables and write to temp CSV files
-        $this->source->fetch();
+        //$this->source->fetch();
 
         // Read out CSV files and store in Destination database tables
+        $this->destination->dump();
 
         // Remove temp CSV files
 
