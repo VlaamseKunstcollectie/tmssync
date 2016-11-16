@@ -12,7 +12,18 @@ namespace Flemishartcollection\TMSSync\Configuration;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 
+/**
+ * Database schema configuration class for Symfony\Config.
+ *
+ * Contains the validation rules for app/config/schema.yml.
+ *
+ * @author Matthias Vandermaesen <matthias@colada.be>
+ */
 class SchemaConfiguration implements ConfigurationInterface {
+
+    /**
+     * {@inheritdoc}
+     */
     public function getConfigTreeBuilder() {
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('schema');
@@ -43,6 +54,7 @@ class SchemaConfiguration implements ConfigurationInterface {
                                 ->end()
                     ->end()
                 ->end();
+
         return $treeBuilder;
     }
 }

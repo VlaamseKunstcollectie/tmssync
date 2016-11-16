@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * This file is part of the TMS Sync package.
  *
  * (c) Matthias Vandermaesen <matthias@colada.be>

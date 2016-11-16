@@ -16,20 +16,55 @@ use Flemishartcollection\TMSSync\Database\DatabaseInterface;
 use Flemishartcollection\TMSSync\Configuration\Configuration as Parameters;
 use Flemishartcollection\TMSSync\Filesystem\CSVWriter;
 
+/**
+ * Source class
+ *
+ * Represents the "Source" to which the data will be mirrored. This class
+ * is an API for the application\console commands. It contains all the core
+ * logic needed to interact with a Microsoft SQL database.
+ *
+ * @author Matthias Vandermaesen <matthias@colada.be>
+ */
 class Source implements DatabaseInterface {
-
+    /**
+     * An instance representing the database connection.
+     */
     private $connection;
 
+    /**
+     * Array of processed configuration variables.
+     */
     private $parameters;
 
+    /**
+     * Constructor
+     *
+     * @param Flemishartcollection\TMSSync\Configuration\Configuration App specific parameters
+     */
     public function __construct(Parameters $parameters) {
         $this->parameters = $parameters->process();
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function setConnection(Connection $connection) {
         $this->connection = $connection->getConnection('mssql');
     }
 
+    /**
+     * Fetch data from source and store it in CSV files.
+     *
+     * Each table defined in the "mapping" key as "source" will be queried.
+     * For each table, an associated CSV file with "destination" will be
+     * created. Each row will be stored in this file. Notes:
+     *
+     * - Only tables defined as "source" in the "mapping" key will be dumped.
+     * - ...
+     *
+     * @throws Exception An exception if something goes wrong.
+     * @return boolean true when the operation was completed succesfully.
+     */
     public function fetch() {
         $mappings = $this->parameters['mapping'];
         $tables = $this->parameters['tables'];

@@ -1,6 +1,6 @@
 <?php
-/*
-  * This file is part of the TMS Sync package.
+/**
+ * This file is part of the TMS Sync package.
  *
  * (c) Matthias Vandermaesen <matthias@colada.be>
  *
@@ -15,16 +15,40 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Flemishartcollection\TMSSync\Database\Destination;
 use Flemishartcollection\TMSSync\Database\Source;
 
+/**
+ * Exporter.
+ *
+ * This class implements the tms:export class. This class fetches data from a
+ * "Source", stores it in a set of intermediate CSV files and then imports those
+ * files to a "Destination".
+ *
+ * @author Matthias Vandermaesen <matthias@colada.be>
+ */
 class Exporter extends Command {
-
+    /**
+     * The destination to which data will be dumped.
+     */
     private $destination;
 
+    /**
+     * The source from which data is fetched.
+     */
     private $source;
 
+    /**
+     * Dependency method injection. Sets the destination class.
+     *
+     * @param Flemishartcollection\TMSSync\Database\Destination $destination The destination.
+     */
     public function setDestination(Destination $destination) {
         $this->destination = $destination;
     }
 
+    /**
+     * Dependency method injection. Sets the destination class.
+     *
+     * @param Flemishartcollection\TMSSync\Database\Source $source The source.
+     */
     public function setSource(Source $source) {
         $this->source = $source;
     }
@@ -49,8 +73,5 @@ class Exporter extends Command {
 
         // Read out CSV files and store in Destination database tables
         $this->destination->dump();
-
-        // Remove temp CSV files
-
     }
 }

@@ -13,21 +13,48 @@ use League\Flysystem\Filesystem;
 use League\Flysystem\Adapter\Local;
 use League\Csv\Writer;
 
+/**
+ * CSVWriter class
+ *
+ * A wrapper class around League\Csv\Writer. This class will write CSV files
+ * to the app/files directory.
+ *
+ * @author Matthias Vandermaesen <matthias@colada.be>
+ */
 class CSVWriter {
+    /**
+     * Representation of the filesystem.
+     */
     private $filesystem;
 
+    /**
+     * The basepath of the filesystem.
+     */
     private $basepath;
 
+    /**
+     * An instance of League\Csv\Writer
+     */
     private $writer;
 
     private $file;
 
+    /**
+     * Constructor
+     */
     public function __construct() {
         $this->basepath = __DIR__.'/../../../../app/files';
         $adapter = new Local($this->basepath);
         $this->filesystem = new Filesystem($adapter);
     }
 
+    /**
+     * Create a CSV file
+     *
+     * Create a CSV file in app/files and make it ready to write data to.
+     *
+     * @param string $name The name of the CSV file
+     */
     public function createCSV($name) {
         $this->file = sprintf("%s.csv", $name);
         if ($this->filesystem->has($this->file)) {
@@ -38,10 +65,20 @@ class CSVWriter {
         $this->writer->setOutputBOM(Writer::BOM_UTF8);
     }
 
+    /**
+     * Set the header of the CSV file.
+     *
+     * @param array $header The header of the CSV file.
+     */
     public function setHeader($header) {
         $this->writer->insertOne($header);
     }
 
+    /**
+     * Insert a signle row into the CSV file.
+     *
+     * @param array $row A single row of data to be inserted into the CSV file.
+     */
     public function insertOne($row) {
         $this->writer->insertOne($row);
     }

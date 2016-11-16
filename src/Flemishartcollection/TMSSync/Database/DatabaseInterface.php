@@ -11,6 +11,16 @@ namespace Flemishartcollection\TMSSync\Database;
 
 use Flemishartcollection\TMSSync\Database\Connection;
 
+/**
+ * The database interface for database classes.
+ *
+ * @author Matthias Vandermaesen <matthias@colada.be>
+ */
 interface DatabaseInterface {
+    /**
+     * Inject a loaded Connection instance.
+     *
+     * @param Flemishartcollection\TMSSync\Database\Connection The loaded Connection instance.
+     */
     public function setConnection(Connection $connection);
 }

@@ -1,6 +1,6 @@
 <?php
-/*
-  * This file is part of the TMS Sync package.
+/**
+ * This file is part of the TMS Sync package.
  *
  * (c) Matthias Vandermaesen <matthias@colada.be>
  *
@@ -16,22 +16,59 @@ use Flemishartcollection\TMSSync\Database\DatabaseInterface;
 use Flemishartcollection\TMSSync\Configuration\Configuration as Parameters;
 use Flemishartcollection\TMSSync\Filesystem\CSVReader;
 
+/**
+ * Destination class
+ *
+ * Represents the "Destination" to which the data will be mirrored. This class
+ * is an API for the application\console commands. It contains all the core
+ * logic needed to interact with a MySQL database.
+ *
+ * @author Matthias Vandermaesen <matthias@colada.be>
+ */
 class Destination implements DatabaseInterface {
-
+    /**
+     * An instance representing the database connection.
+     */
     private $connection;
 
+    /**
+     * Array of processed configuration variables.
+     */
     private $parameters;
 
+    /**
+     * Constructor
+     *
+     * @param Flemishartcollection\TMSSync\Configuration\Configuration App specific parameters
+     */
     public function __construct(Parameters $parameters) {
         $this->parameters = $parameters->process();
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function setConnection(Connection $connection) {
         $this->connection = $connection->getConnection('mysql');
     }
 
     /**
-     * Dump tables from CSV to MySQL destination
+     * Dump tables from CSV to MySQL destination.
+     *
+     * Takes the list configured in the "mapping" key and dumps data to the
+     * destination database accordingly. This function will first fetch the
+     * associated CSV file, load the data and dump it to a corresponding MySQL
+     * table. Notes:
+     *
+     *  - Dumps whatever is defined in the "mapping" key to the database. You
+     *    can define multiple tables to be dumped.
+     *  - The database schema stored in app\config\schema.yml was used to create
+     *    the required database structure. If the corresponding table does not
+     *    exists, a SQL error is thrown.
+     *  - The "mapping" key can *only* contain destination tables which are
+     *    defined in the schema.
+     *  - The table structure in schema has to mirror the structure of the CSV
+     *    file. Mismatches will result in a SQL error upon inserting data.
      */
     public function dump() {
         $mappings = $this->parameters['mapping'];
@@ -82,7 +119,14 @@ class Destination implements DatabaseInterface {
     }
 
     /**
-     * Truncate an entire table
+     * Truncate an entire database.
+     *
+     * All tables defined in app\config\schema.yml will be truncated through
+     * this function. Will also reset the auto_increment if set.
+     *
+     * @throws Exception Exception if the truncation fails for a particular
+     *   table
+     * @return boolean True if truncate was succesful.
      */
     public function truncate() {
         $tables = array_keys($this->parameters['tables']);
@@ -98,6 +142,9 @@ class Destination implements DatabaseInterface {
                 throw $e; // bubble up to command
             }
 
+            // @todo
+            //  reset increment only if autoincrement is true for this table.
+
             $this->connection->beginTransaction();
             try {
                 $this->connection->query(sprintf('ALTER TABLE %s AUTO_INCREMENT = 1', $tableName));
@@ -112,7 +159,12 @@ class Destination implements DatabaseInterface {
     }
 
     /**
-     * Create the schema for Destination
+     * Create the schema for Destination.
+     *
+     * Reads out the configuration in app\config\schema.yml and creates tables
+     * based on the configuration.
+     *
+     * @todo Support database updates!!
      */
     public function createSchema() {
         $schema = new Schema();

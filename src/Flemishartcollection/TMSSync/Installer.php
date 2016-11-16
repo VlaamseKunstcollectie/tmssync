@@ -1,6 +1,6 @@
 <?php
-/*
-  * This file is part of the TMS Sync package.
+/**
+ * This file is part of the TMS Sync package.
  *
  * (c) Matthias Vandermaesen <matthias@colada.be>
  *
@@ -14,9 +14,25 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Flemishartcollection\TMSSync\Database\Destination;
 
+/**
+ * Installer.
+ *
+ * This class implements the tms:install command. This command installs the
+ * database schema defined in app/config/schema.yml to "Destination".
+ *
+ * @author Matthias Vandermaesen <matthias@colada.be>
+ */
 class Installer extends Command {
-    private $connection;
+    /**
+     * The destination to which data will be dumped.
+     */
+    private $destination;
 
+    /**
+     * Dependency method injection. Sets the destination class.
+     *
+     * @param Flemishartcollection\TMSSync\Database\Destination $destination The destination.
+     */
     public function setDestination(Destination $destination) {
         $this->destination = $destination;
     }

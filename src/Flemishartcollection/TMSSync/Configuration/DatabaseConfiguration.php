@@ -12,7 +12,18 @@ namespace Flemishartcollection\TMSSync\Configuration;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 
+/**
+ * Database configuration class for Symfony\Config.
+ *
+ * Contains the validation rules for app/config/config.yml.
+ *
+ * @author Matthias Vandermaesen <matthias@colada.be>
+ */
 class DatabaseConfiguration implements ConfigurationInterface {
+
+    /**
+     *{@inheritdoc}
+     */
     public function getConfigTreeBuilder() {
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('params');
