@@ -13,14 +13,21 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Flemishartcollection\TMSSync\Database\Destination;
+use Flemishartcollection\TMSSync\Database\Source;
 
 class Exporter extends Command {
+
+    private $destination;
+
+    private $source;
 
     public function setDestination(Destination $destination) {
         $this->destination = $destination;
     }
 
-    // Set the source too!
+    public function setSource(Source $source) {
+        $this->source = $source;
+    }
 
     /**
      * {@inheritdoc}
@@ -45,17 +52,16 @@ class Exporter extends Command {
         $formattedBlock = $formatter->formatBlock($errorMessages, 'error');
         $output->writeln($formattedBlock);
 
-
-        // Truncate the entire database table
+        // Truncate all Destination database tables.
         $this->destination->truncate('users');
 
-        // Fetch MSSQL data
+        // Fetch data from Source database tables
 
-        // Write MMSQL data to temp CSV file or anything else.
+        // Write Source database tables to temp CSV files
 
-        // Read out CSV file and store in MySQL database
+        // Read out CSV files and store in Destination database tables
 
-        // Remove temp CSV file
+        // Remove temp CSV files
 
     }
 }

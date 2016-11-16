@@ -71,6 +71,11 @@ data.
 The export command will make a shallow copy of the following tables. Data will
 not be modified during this process.
 
+The mapping between TMS (Source) and MySQL (destination) is determined in the
+`config.yml` file. The `mapping` key contains a configurable mapping between
+MS SQL tables and MySQL tables. This gives system administrators flexible
+configuration options in case of database changes.
+
 ## Contributing
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.

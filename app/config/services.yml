@@ -9,12 +9,17 @@ services:
     class: Flemishartcollection\TMSSync\Exporter
     calls:
       - [setDestination, ['@flemishartcollection.database.destination']]
+      - [setSource, ['@flemishartcollection.database.source']]
   flemishartcollection.installer:
     class: Flemishartcollection\TMSSync\Installer
     calls:
       - [setDestination, ['@flemishartcollection.database.destination']]
   flemishartcollection.database.destination:
     class: Flemishartcollection\TMSSync\Database\Destination
+    calls:
+      - [setConnection, ['@flemishartcollection.database.connection']]
+  flemishartcollection.database.source:
+    class: Flemishartcollection\TMSSync\Database\Source
     calls:
       - [setConnection, ['@flemishartcollection.database.connection']]
   flemishartcollection.database.connection:
