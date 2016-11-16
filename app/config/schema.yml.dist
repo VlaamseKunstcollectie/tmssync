@@ -1,0 +1,12 @@
+schema:
+  tables:
+    objects:
+      primaryKey: id
+      columns:
+        id:
+          name: id
+          type: integer
+          attributes:
+            - { unsigned: true }
+            - { autoincrement: true }
+            - { length: 64 }

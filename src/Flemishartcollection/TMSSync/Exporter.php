@@ -53,7 +53,7 @@ class Exporter extends Command {
         $output->writeln($formattedBlock);
 
         // Truncate all Destination database tables.
-        $this->destination->truncate('users');
+        // $this->destination->truncate();
 
         // Fetch data from Source database tables
 

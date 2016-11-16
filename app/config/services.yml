@@ -16,10 +16,12 @@ services:
       - [setDestination, ['@flemishartcollection.database.destination']]
   flemishartcollection.database.destination:
     class: Flemishartcollection\TMSSync\Database\Destination
+    arguments: ['@flemishartcollection.configuration.configuration']
     calls:
       - [setConnection, ['@flemishartcollection.database.connection']]
   flemishartcollection.database.source:
     class: Flemishartcollection\TMSSync\Database\Source
+    arguments: ['@flemishartcollection.configuration.configuration']
     calls:
       - [setConnection, ['@flemishartcollection.database.connection']]
   flemishartcollection.database.connection:

@@ -13,10 +13,17 @@ use Exception;
 use Doctrine\DBAL\Schema\Schema;
 use Flemishartcollection\TMSSync\Database\Connection;
 use Flemishartcollection\TMSSync\Database\DatabaseInterface;
+use Flemishartcollection\TMSSync\Configuration\Configuration as Parameters;
 
 class Destination implements DatabaseInterface {
 
     private $connection;
+
+    private $parameters;
+
+    public function __construct(Parameters $parameters) {
+        $this->parameters = $parameters->process();
+    }
 
     public function setConnection(Connection $connection) {
         $this->connection = $connection->getConnection('mysql');
@@ -59,27 +66,20 @@ class Destination implements DatabaseInterface {
     public function createSchema() {
         $schema = new Schema();
 
-        /* Now use the Schema object to create a 'users' table */
-        $objectsTable = $schema->createTable("objects");
+        $tables = $this->parameters['tables'];
 
-        // time created
-        // last time updated (TBD)
-        // MD5 of record (was record updated of late?) (TBD)
-        // id = autoincrement (internal id)
-        // TMS :: database id
-        // TMS :: ...
+        foreach($tables as $tableName => $props) {
+            $table = $schema->createTable($tableName);
 
-        $objectsTable->addColumn("id", "integer", array("unsigned" => true));
-        $objectsTable->addColumn("first_name", "string", array("length" => 64));
-        $objectsTable->addColumn("last_name", "string", array("length" => 64));
-        $objectsTable->addColumn("email", "string", array("length" => 256));
-        $objectsTable->addColumn("website", "string", array("length" => 256));
-
-        $objectsTable->setPrimaryKey(array("id"));
+            foreach ($props['columns'] as $key => $colProps) {
+                $attributes = array_filter($colProps['attributes'][0]);
+                $table->addColumn($colProps['name'], $colProps['type'], $attributes);
+            }
+            $table->setPrimaryKey(array($props['primaryKey']));
+        }
 
         $platform = $this->connection->getDatabasePlatform();
         $queries = $schema->toSql($platform);
-
         foreach ($queries as $query) {
             $this->connection->query($query);
         }

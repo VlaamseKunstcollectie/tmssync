@@ -12,33 +12,42 @@ namespace Flemishartcollection\TMSSync\Configuration;
 use Symfony\Component\Yaml\Yaml;
 use Symfony\Component\Config\Definition\Processor;
 use Flemishartcollection\TMSSync\Configuration\DatabaseConfiguration;
+use Flemishartcollection\TMSSync\Configuration\SchemaConfiguration;
 
 class Configuration {
     private $processor;
 
     private $databaseConfiguration;
 
-    public function __construct(Processor $processor, DatabaseConfiguration $databaseConfiguration) {
+    public function __construct(Processor $processor) {
         $this->processor = $processor;
-        $this->databaseConfiguration = $databaseConfiguration;
+        $this->databaseConfiguration = new DatabaseConfiguration();
+        $this->schemaConfiguration = new SchemaConfiguration();
     }
 
     public function process() {
-        $configuration = null;
+        $configuration = [];
 
-        try {
-            $basepath = __DIR__ .'/../../../../app/config';
-            $contents = file_get_contents($basepath . '/config.yml');
-            $configuration = Yaml::parse($contents);
-        } catch (\InvalidArgumentException $exception) {
-            exit("Are you sure the configuration files exist?");
+        $files = [
+            'config.yml' => 'databaseConfiguration',
+            'schema.yml' => 'schemaConfiguration'
+        ];
+
+        foreach ($files as $file => $processorClass) {
+            try {
+                $basepath = __DIR__ .'/../../../../app/config';
+                $contents = file_get_contents($basepath . '/' . $file);
+                $YMLConfiguration = Yaml::parse($contents);
+            } catch (\InvalidArgumentException $exception) {
+                exit("Are you sure the configuration files exist?");
+            }
+
+            // Process the configuration files (merge one-or-more *.yml files)
+            $configuration += $this->processor->processConfiguration(
+                $this->{$processorClass},
+                $YMLConfiguration
+            );
         }
-
-        // Process the configuration files (merge one-or-more *.yml files)
-        $configuration = $this->processor->processConfiguration(
-            $this->databaseConfiguration,
-            $configuration
-        );
 
         return $configuration;
  /// TO BE CONTIONUED http://www.andrew-kirkpatrick.com/2014/08/example-use-symfony-config-component-standalone/
