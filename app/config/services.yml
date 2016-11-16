@@ -7,8 +7,14 @@ services:
       - [setExporter, ['@flemishartcollection.exporter']]
   flemishartcollection.exporter:
     class: Flemishartcollection\TMSSync\Exporter
+    calls:
+      - [setDestination, ['@flemishartcollection.database.destination']]
   flemishartcollection.installer:
     class: Flemishartcollection\TMSSync\Installer
+    calls:
+      - [setDestination, ['@flemishartcollection.database.destination']]
+  flemishartcollection.database.destination:
+    class: Flemishartcollection\TMSSync\Database\Destination
     calls:
       - [setConnection, ['@flemishartcollection.database.connection']]
   flemishartcollection.database.connection:

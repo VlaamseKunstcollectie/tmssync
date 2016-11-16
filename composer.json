@@ -14,7 +14,8 @@
         "symfony/dependency-injection": "~2.5",
         "symfony/config": "~2.5",
         "symfony/yaml": "^3.1",
-        "doctrine/dbal": "v2.5.4"
+        "doctrine/dbal": "v2.5.4",
+        "monolog/monolog": "^1.21"
     },
     "autoload": {
         "psr-4": {

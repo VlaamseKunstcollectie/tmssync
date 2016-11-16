@@ -1,0 +1,7 @@
+params:
+    mysql:
+      host: localhost
+      driver: pdo_mysql
+      dbname: tms
+      user: root
+      password: root
