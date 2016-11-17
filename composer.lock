@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a5c6f8d6533010f8570afb766744421e",
-    "content-hash": "24cfe9c66b59eb5bd2ecc6741c098d3a",
+    "hash": "b7a4edec71f03abeb5c0f61a8816c2e8",
+    "content-hash": "1dc1d54806d2db1ea05b5b34f919f781",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -614,6 +614,65 @@
                 "storage"
             ],
             "time": "2016-11-16 08:56:22"
+        },
+        {
+            "name": "leaseweb/doctrine-pdo-dblib",
+            "version": "1.1.0",
+            "target-dir": "Lsw/DoctrinePdoDblib",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/LeaseWeb/LswDoctrinePdoDblib.git",
+                "reference": "b09fa3f250d7115e065046f5901199683f536d79"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/LeaseWeb/LswDoctrinePdoDblib/zipball/b09fa3f250d7115e065046f5901199683f536d79",
+                "reference": "b09fa3f250d7115e065046f5901199683f536d79",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/dbal": ">=2.1.0",
+                "php": ">=5.3.2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Lsw\\DoctrinePdoDblib": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Maurits van der Schee",
+                    "email": "m.vanderschee@leaseweb.com"
+                },
+                {
+                    "name": "Tyler Rooney",
+                    "email": "tyler@tylerrooney.ca"
+                },
+                {
+                    "name": "Razvan Tudorica",
+                    "email": "r.tudorica@ocom.com"
+                }
+            ],
+            "description": "Library for support of the pdo_dblib (MSSQL) driver in Doctrine",
+            "homepage": "http://www.leaseweblabs.com",
+            "keywords": [
+                "dblib",
+                "doctrine",
+                "mssql",
+                "pdo",
+                "pdo_dblib"
+            ],
+            "time": "2016-08-11 07:03:01"
         },
         {
             "name": "monolog/monolog",

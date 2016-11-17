@@ -17,7 +17,8 @@
         "doctrine/dbal": "v2.5.4",
         "monolog/monolog": "^1.21",
         "league/csv": "^8.1",
-        "league/flysystem": "^1.0"
+        "league/flysystem": "^1.0",
+        "leaseweb/doctrine-pdo-dblib": "^1.1"
     },
     "autoload": {
         "psr-4": {
