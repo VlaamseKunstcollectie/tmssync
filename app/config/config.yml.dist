@@ -1,0 +1,17 @@
+params:
+    mysql:
+      host: localhost
+      driver: pdo_mysql
+      dbname: tms
+      user: root
+      password: root
+    mssql:
+      driverClass:
+      host: localhost
+      driver: pdo_mysql
+      dbname: tms
+      user: root
+      password: root
+    mapping:
+      - { source: foo, destination: bar}
+      - { source: fooz, destination: baz}
