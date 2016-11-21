@@ -76,8 +76,7 @@ class Source implements DatabaseInterface {
             // Get a header
             $sql = sprintf("SELECT TOP 100 * FROM %s", $source);
             $rows = $this->connection->query($sql)->fetchAll();
-            $row = array_pop($rows);
-            $header = array_keys($row);
+            $header = array_keys($rows[0]);
 
             if (isset($tables[$destination])) {
                 $header = array_map(function ($props) {
@@ -88,7 +87,9 @@ class Source implements DatabaseInterface {
                 $csv->createCSV($destination);
                 $csv->setHeader($header);
 
-                $csv->insertONe($row);
+                foreach ($rows as $row) {
+                    $csv->insertONe($row);
+                }
 
                 // SELECT and FETCH from the database. Store it to CSV if any.
                 // MAPPING HAPPENS HERE!!!
