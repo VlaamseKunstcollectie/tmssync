@@ -73,7 +73,7 @@ class Source implements DatabaseInterface {
             $destination = $mapping['destination'];
             $source = $mapping['source'];
 
-            if (isset($tables[$destination])) {
+            /* if (isset($tables[$destination])) {
                 $header = array_map(function ($props) {
                     return $props['name'];
                 }, $tables[$destination]['columns']);
@@ -84,7 +84,7 @@ class Source implements DatabaseInterface {
 
                 // SELECT and FETCH from the database. Store it to CSV if any.
                 // MAPPING HAPPENS HERE!!!
-            }
+            } */
         }
     }
 }
