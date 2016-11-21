@@ -10,3 +10,224 @@ schema:
             - { unsigned: true }
             - { autoincrement: true }
             - { length: 64 }
+        ObjectID:
+          name: ObjectID
+          type: string
+          attributes:
+            - { length: 128 }
+        ObjectNumber:
+          name: ObjectNumber
+          type: string
+          attributes:
+            - { length: 128 }
+        SortNumber:
+          name: SortNumber
+          type: string
+          attributes:
+            - { length: 128 }
+        PhysicalParentID:
+          name: PhysicalParentID
+          type: string
+          attributes:
+            - { length: 128 }
+        ParentID:
+          name: ParentID
+          type: string
+          attributes:
+            - { length: 128 }
+        ParentObjectNumber:
+          name: ParentObjectNumber
+          type: string
+          attributes:
+            - { length: 128 }
+        ParentSortNumber:
+          name: ParentSortNumber
+          type: string
+          attributes:
+            - { length: 128 }
+        DepartmentID:
+          name: DepartmentID
+          type: string
+          attributes:
+            - { length: 128 }
+        ObjectStatusID:
+          name: ObjectStatusID
+          type: string
+          attributes:
+            - { length: 128 }
+        ClassificationID:
+          name: ClassificationID
+          type: string
+          attributes:
+            - { length: 128 }
+        ObjectName:
+          name: ObjectName
+          type: string
+          attributes:
+            - { length: 128 }
+        Dated:
+          name: Dated
+          type: string
+          attributes:
+            - { length: 128 }
+        DateBegin:
+          name: DateBegin
+          type: string
+          attributes:
+            - { length: 128 }
+        DateEnd:
+          name: DateEnd
+          type: string
+          attributes:
+            - { length: 128 }
+        DateRemarks:
+          name: DateRemarks
+          type: text
+        DateEffectiveISODate:
+          name: DateEffectiveISODate
+          type: string
+          attributes:
+            - { length: 128 }
+        Medium:
+          name: Medium
+          type: string
+          attributes:
+            - { length: 255 }
+        Dimensions:
+          name: Dimensions
+          type: text
+        CreditLine:
+          name: CreditLine
+          type: text
+        Description:
+          name: Description
+          type: text
+        TitleID:
+          name: TitleID
+          type: string
+          attributes:
+            - { length: 128 }
+        Title:
+          name: Title
+          type: text
+        TitleRemarks:
+          name: TitleRemarks
+          type: text
+        TitleEffectiveISODate:
+          name: TitleEffectiveISODate
+          type: text
+        ConXrefSetID:
+          name: ConXrefSetID
+          type: string
+          attributes:
+            - { length: 128 }
+        ForwardDisplay:
+          name: ForwardDisplay
+          type: string
+          attributes:
+            - { length: 128 }
+        InvertedDisplay:
+          name: InvertedDisplay
+          type: string
+          attributes:
+            - { length: 128 }
+        AttributionRemarks:
+          name: AttributionRemarks
+          type: text
+        AttributionEffectiveISODate:
+          name: AttributionEffectiveISODate
+          type: string
+          attributes:
+            - { length: 128 }
+        RoleID:
+          name: RoleID
+          type: string
+          attributes:
+            - { length: 128 }
+        Role:
+          name: Role
+          type: text
+        NameID:
+          name: NameID
+          type: string
+          attributes:
+            - { length: 128 }
+        ConstituentID:
+          name: ConstituentID
+          type: string
+          attributes:
+            - { length: 128 }
+        Prefix:
+          name: Prefix
+          type: string
+          attributes:
+            - { length: 128 }
+        Remarks:
+          name: Remarks
+          type: text
+        ConStatement:
+          name: ConStatement
+          type: text
+        Suffix:
+          name: Suffix
+          type: string
+          attributes:
+            - { length: 64 }
+        Amount:
+          name: Amount
+          type: string
+          attributes:
+            - { length: 128 }
+        LastName:
+          name: LastName
+          type: text
+        FirstName:
+          name: FirstName
+          type: text
+        NameTitle:
+          name: NameTitle
+          type: text
+        AltNameRemarks:
+          name: AltNameRemarks
+          type: text
+        MiddleName:
+          name: MiddleName
+          type: text
+        AltNameSuffix:
+          name: AltNameSuffix
+          type: string
+          attributes:
+            - { length: 64 }
+        CultureGroup:
+          name: CultureGroup
+          type: text
+        Institution:
+          name: Institution
+          type: string
+          attributes:
+            - { length: 255 }
+        NameType:
+          name: NameType
+          type: string
+          attributes:
+            - { length: 255 }
+        DisplayName:
+          name: DisplayName
+          type: string
+          attributes:
+            - { length: 255 }
+        Position:
+          name: Position
+          type: string
+          attributes:
+            - { length: 255 }
+        salutation:
+          name: salutation
+          type: string
+          attributes:
+            - { length: 64 }
+        AlphaSort:
+          name: AlphaSort
+          type: string
+          attributes:
+            - { length: 128 }

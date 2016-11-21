@@ -175,7 +175,12 @@ class Destination implements DatabaseInterface {
             $table = $schema->createTable($tableName);
 
             foreach ($props['columns'] as $key => $colProps) {
-                $attributes = array_filter($colProps['attributes'][0]);
+                $attributes = array();
+                if (isset($colProps['attributes'])) {
+                    if (isset($colProps['attributes'][0])) {
+                        $attributes = array_filter($colProps['attributes'][0]);
+                    }
+                }
                 $table->addColumn($colProps['name'], $colProps['type'], $attributes);
             }
             $table->setPrimaryKey(array($props['primaryKey']));
