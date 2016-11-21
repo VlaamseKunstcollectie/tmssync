@@ -78,9 +78,8 @@ class Source implements DatabaseInterface {
             $rows = $this->connection->query($sql)->fetchAll();
             $row = array_pop($rows);
             $header = array_keys($row);
-            var_dump($header);
 
-            /* if (isset($tables[$destination])) {
+            if (isset($tables[$destination])) {
                 $header = array_map(function ($props) {
                     return $props['name'];
                 }, $tables[$destination]['columns']);
@@ -89,9 +88,11 @@ class Source implements DatabaseInterface {
                 $csv->createCSV($destination);
                 $csv->setHeader($header);
 
+                $csv->insertONe($row);
+
                 // SELECT and FETCH from the database. Store it to CSV if any.
                 // MAPPING HAPPENS HERE!!!
-            } */
+            }
         }
     }
 }
