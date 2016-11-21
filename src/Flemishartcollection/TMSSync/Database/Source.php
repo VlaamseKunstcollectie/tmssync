@@ -73,9 +73,11 @@ class Source implements DatabaseInterface {
             $destination = $mapping['destination'];
             $source = $mapping['source'];
 
-            // Get a header
-            $sql = sprintf("SELECT TOP 100 * FROM %s", $source);
+            // Get all data from this table
+            $sql = sprintf("SELECT * FROM %s", $source);
             $rows = $this->connection->query($sql)->fetchAll();
+
+            // Get the header
             $header = array_keys($rows[0]);
 
             if (isset($tables[$destination])) {

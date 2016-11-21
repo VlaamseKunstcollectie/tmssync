@@ -82,14 +82,12 @@ class Destination implements DatabaseInterface {
                 $columns = array_map(function ($props) {
                     return $props['name'];
                 }, $tables[$destination]['columns']);
-                array_shift($columns);
                 $cols = implode(',', $columns);
 
                 // Set placeholders values
                 $placeholders = array_map(function ($props) {
                     return ':' . $props['name'];
                 }, $tables[$destination]['columns']);
-                array_shift($placeholders);
                 $values = implode(',', $placeholders);
 
                 $sql = sprintf("INSERT INTO %s (%s) VALUES (%s)", $destination, $cols, $values);
@@ -101,14 +99,18 @@ class Destination implements DatabaseInterface {
                 $results = $reader->fetch();
 
                 // Read out each row and store it into the databse
-                foreach ($results as $row) {
+                foreach ($results as $id => $row) {
                     try {
                         $this->connection->beginTransaction();
                         $sth = $this->connection->prepare($sql);
                         $placeholders = array_values($placeholders);
+
+                        array_unshift($row, $id); // acount for the autoincrement id
+
                         foreach ($row as $key => $value) {
                             $sth->bindValue($placeholders[$key], $value);
                         }
+
                         $sth->execute();
                         $this->connection->commit();
                     } catch (Exception $e) {
