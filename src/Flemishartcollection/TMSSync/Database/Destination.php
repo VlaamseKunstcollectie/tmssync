@@ -82,12 +82,14 @@ class Destination implements DatabaseInterface {
                 $columns = array_map(function ($props) {
                     return $props['name'];
                 }, $tables[$destination]['columns']);
+                array_shift($columns);
                 $cols = implode(',', $columns);
 
                 // Set placeholders values
                 $placeholders = array_map(function ($props) {
                     return ':' . $props['name'];
                 }, $tables[$destination]['columns']);
+                array_shift($placeholders);
                 $values = implode(',', $placeholders);
 
                 $sql = sprintf("INSERT INTO %s (%s) VALUES (%s)", $destination, $cols, $values);

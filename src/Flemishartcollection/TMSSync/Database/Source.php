@@ -74,7 +74,7 @@ class Source implements DatabaseInterface {
             $source = $mapping['source'];
 
             // Get a header
-            $sql = sprintf("SELECT TOP 1 * FROM %s", $source);
+            $sql = sprintf("SELECT TOP 100 * FROM %s", $source);
             $rows = $this->connection->query($sql)->fetchAll();
             $row = array_pop($rows);
             $header = array_keys($row);
