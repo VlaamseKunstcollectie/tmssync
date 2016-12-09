@@ -96,8 +96,8 @@ class Destination implements DatabaseInterface {
                 $csv = new CSVReader();
                 $reader = $csv->get($destination);
                 $reader->setOffset(1);
-                $results = $reader->fetch(function ($row) use $columns {
-                    $row = array_intersect_key($row, array_flip($columns))
+                $results = $reader->fetch(function ($row) use ($columns) {
+                    return array_intersect_key($row, array_flip($columns));
                 });
 
                 // Read out each row and store it into the databse
