@@ -54,7 +54,7 @@ schema:
             - { autoincrement: true }
             - { length: 64 }
         ClassificationXRefID:
-          name: ClassificationID
+          name: ClassificationXRefID
           type: text
         ClassificationID:
           name: ClassificationID
