@@ -11,7 +11,7 @@ schema:
             - { autoincrement: true }
             - { length: 64 }
         ClassificationID:
-          name: Classification
+          name: ClassificationID
           type: text
         Classification:
           name: Classification
