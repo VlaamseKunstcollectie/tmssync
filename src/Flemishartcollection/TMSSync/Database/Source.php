@@ -81,10 +81,6 @@ class Source implements DatabaseInterface {
             $header = array_keys($rows[0]);
 
             if (isset($tables[$destination])) {
-                // $header = array_map(function ($props) {
-                //    return $props['name'];
-                // }, $tables[$destination]['columns']);
-
                 $csv = new CSVWriter();
                 $csv->createCSV($destination);
                 $csv->setHeader($header);
