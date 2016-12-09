@@ -11,7 +11,7 @@ schema:
             - { autoincrement: true }
             - { length: 64 }
         ObjectNameID:
-          name: ObjectID
+          name: ObjectNameID
           type: string
           attributes:
             - { length: 128 }
