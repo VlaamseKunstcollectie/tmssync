@@ -107,7 +107,9 @@ class Destination implements DatabaseInterface {
                         $row['id'] = $id; // acount for the autoincrement id
 
                         foreach ($row as $key => $value) {
-                            $sth->bindValue($placeholders[$key], $value);
+                            if (in_array($key, array_keys($placeholders))) {
+                                $sth->bindValue($placeholders[$key], $value);
+                            }
                         }
 
                         $sth->execute();
