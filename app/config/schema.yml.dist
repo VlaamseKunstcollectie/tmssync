@@ -10,7 +10,7 @@ schema:
             - { unsigned: true }
             - { autoincrement: true }
             - { length: 64 }
-        ClassificationID
+        ClassificationID:
           name: Classification
           type: text
         Classification:
@@ -53,7 +53,7 @@ schema:
             - { unsigned: true }
             - { autoincrement: true }
             - { length: 64 }
-        ClassificationXRefID
+        ClassificationXRefID:
           name: ClassificationID
           type: text
         ClassificationID:
