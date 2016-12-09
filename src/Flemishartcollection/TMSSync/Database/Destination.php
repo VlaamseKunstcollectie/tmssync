@@ -180,10 +180,9 @@ class Destination implements DatabaseInterface {
             foreach ($props['columns'] as $key => $colProps) {
                 $attributes = array();
                 if (isset($colProps['attributes'])) {
-                    //if (isset($colProps['attributes'][0])) {
-                    //    $attributes = array_filter($colProps['attributes'][0]);
-                    //}
-                    $attributes = $colProps['attributes'];
+                    if (isset($colProps['attributes'][0])) {
+                        $attributes = array_filter($colProps['attributes'][0]);
+                    }
                 }
                 $table->addColumn($colProps['name'], $colProps['type'], $attributes);
             }

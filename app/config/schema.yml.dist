@@ -329,5 +329,4 @@ schema:
           name: AlphaSort
           type: string
           attributes:
-            - { length: 128 }
-            - { notnull: true }
+            - { length: 128, notnull: true }
