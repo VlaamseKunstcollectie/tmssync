@@ -1,5 +1,45 @@
 schema:
   tables:
+    Classifications:
+      primaryKey: tmsid
+      columns:
+        tmsid:
+          name: tmsid
+          type: integer
+          attributes:
+            - { unsigned: true }
+            - { autoincrement: true }
+            - { length: 64 }
+        Classification:
+          name: Classification
+          type: text
+        AATID:
+          name: AATID
+          type: text
+        AATCN:
+          name: AATCN
+          type: text
+        SourceID:
+          name: SourceID
+          type: text
+        LoginID:
+          name: LoginID
+          type: text
+        EnteredDate:
+          name: EnteredDate
+          type: text
+        SubClassification:
+          name: SubClassification
+          type: text
+        SubClassification2:
+          name: SubClassification2
+          type: text
+        SubClassification3:
+          name: SubClassification3
+          type: text
+        SysTimeStamp:
+          name: SysTimeStamp
+          type: text
     ClassificationXRefs:
       primaryKey: tmsid
       columns:
