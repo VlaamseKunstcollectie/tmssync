@@ -103,9 +103,8 @@ class Destination implements DatabaseInterface {
                     try {
                         $this->connection->beginTransaction();
                         $sth = $this->connection->prepare($sql);
-                        $placeholders = array_values($placeholders);
 
-                        array_unshift($row, $id); // acount for the autoincrement id
+                        $row['id'] = $id // acount for the autoincrement id
 
                         foreach ($row as $key => $value) {
                             $sth->bindValue($placeholders[$key], $value);
