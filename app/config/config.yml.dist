@@ -6,9 +6,8 @@ params:
       user: root
       password: root
     mssql:
-      driverClass:
       host: localhost
-      driver: pdo_mysql
+      driverClass: Lsw\DoctrinePdoDblib\Doctrine\DBAL\Driver\PDODblib\Driver
       dbname: tms
       user: root
       password: root
