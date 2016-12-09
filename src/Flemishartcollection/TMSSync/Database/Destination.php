@@ -96,7 +96,9 @@ class Destination implements DatabaseInterface {
                 $csv = new CSVReader();
                 $reader = $csv->get($destination);
                 $reader->setOffset(1);
-                $results = $reader->fetch();
+                $results = $reader->fetch(function ($row) use $columns {
+                    $row = array_intersect_key($row, array_flip($columns))
+                });
 
                 // Read out each row and store it into the databse
                 foreach ($results as $id => $row) {
@@ -111,9 +113,7 @@ class Destination implements DatabaseInterface {
                             // Fetch only columns from the CSV which are defined
                             // in schema.yml. If a does not exist placeholders,
                             // do not bind it.
-                            if (array_key_exists($key, $placeholders)) {
-                                $sth->bindValue($placeholders[$key], $value);
-                            }
+                            $sth->bindValue($placeholders[$key], $value);
                         }
 
                         $sth->execute();
