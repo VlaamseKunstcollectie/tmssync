@@ -1,5 +1,46 @@
 schema:
   tables:
+    ObjectNames
+      primaryKey: id
+      columns:
+        id:
+          name: id
+          type: integer
+          attributes:
+            - { unsigned: true }
+            - { autoincrement: true }
+            - { length: 64 }
+        ObjectNameID:
+          name: ObjectID
+          type: string
+          attributes:
+            - { length: 128 }
+        ObjectID:
+          name: ObjectID
+          type: string
+          attributes:
+            - { length: 128 }
+        ObjectNameTypeID
+          name: ObjectNameTypeID
+          type: text
+        ObjectName
+          name: ObjectName
+          type: text
+        Remarks
+          name: Remarks
+          type: text
+        Active
+          name: Active
+          type: text
+        EnteredDate
+          name: EnteredDate
+          type: text
+        DisplayOrder
+          name: DisplayOrder
+          type: text
+        LanguageID
+          name: LanguageID
+          type: text
     ObjContext:
       primaryKey: id
       columns:
