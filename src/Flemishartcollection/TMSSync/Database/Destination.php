@@ -108,7 +108,12 @@ class Destination implements DatabaseInterface {
                         array_unshift($row, $id); // acount for the autoincrement id
 
                         foreach ($row as $key => $value) {
-                            $sth->bindValue($placeholders[$key], $value);
+                            // Fetch only columns from the CSV which are defined
+                            // in schema.yml. If a does not exist placeholders,
+                            // do not bind it.
+                            if (array_key_exists($placeholders[$key])) {
+                                $sth->bindValue($placeholders[$key], $value);
+                            }
                         }
 
                         $sth->execute();
