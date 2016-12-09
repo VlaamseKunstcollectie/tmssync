@@ -72,7 +72,7 @@ class Exporter extends Command {
      * {@inheritdoc}
      */
     protected function execute(InputInterface $input, OutputInterface $output) {
-        if $input->getOption('fetch') {
+        if ($input->getOption('fetch')) {
             // Truncate all Destination database tables.
             $this->destination->truncate();
 
