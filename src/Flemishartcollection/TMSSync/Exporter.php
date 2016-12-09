@@ -59,17 +59,26 @@ class Exporter extends Command {
     protected function configure() {
         $this->setName('tmssync:export')
             ->setDescription('Export data from TMS to MySQL');
+            ->addOption(
+                'fetch',
+                'fe',
+                InputOption::VALUE_OPTIONAL,
+                'Fetch data from TMS source?',
+                true
+            );
     }
 
     /**
      * {@inheritdoc}
      */
     protected function execute(InputInterface $input, OutputInterface $output) {
-        // Truncate all Destination database tables.
-        $this->destination->truncate();
+        if $input->getOption('fetch') {
+            // Truncate all Destination database tables.
+            $this->destination->truncate();
 
-        // Fetch data from Source database tables and write to temp CSV files
-        $this->source->fetch();
+            // Fetch data from Source database tables and write to temp CSV files
+            $this->source->fetch();
+        }
 
         // Read out CSV files and store in Destination database tables
         $this->destination->dump();
