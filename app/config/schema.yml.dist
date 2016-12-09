@@ -10,6 +10,11 @@ schema:
             - { unsigned: true }
             - { autoincrement: true }
             - { length: 64 }
+        ObjectID:
+          name: ObjectID
+          type: string
+          attributes:
+            - { length: 128 }
         ObjContextID:
           name: ObjContextID
           type: text
