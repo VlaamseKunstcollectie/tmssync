@@ -16,3 +16,4 @@ params:
       - { source: dbo.vgsrpObjTombstoneD_RO, destination: vgsrpObjTombstoneD_RO }
       - { source: dbo.ObjContext, destination: ObjContext }
       - { source: dbo.ObjectNames, destination: ObjectNames }
+      - { source: dbo.ClassificationXRefs destination: ClassificationXRefs }

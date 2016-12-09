@@ -1,5 +1,36 @@
 schema:
   tables:
+    ClassificationXRefs:
+      primaryKey: id
+      columns:
+        id:
+          name: id
+          type: integer
+          attributes:
+            - { unsigned: true }
+            - { autoincrement: true }
+            - { length: 64 }
+        ClassificationID:
+          name: ClassificationID
+          type: text
+        ID:
+          name: ID
+          type: text
+        TableID:
+          name: TableID
+          type: text
+        LoginID:
+          name: LoginID
+          type: text
+        EnteredDate:
+          name: EnteredDate
+          type: text
+        DisplayOrder:
+          name: DisplayOrder
+          type: text
+        sysTimeStamp:
+          name: sysTimeStamp
+          type: text
     ObjectNames:
       primaryKey: id
       columns:
