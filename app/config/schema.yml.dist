@@ -330,3 +330,4 @@ schema:
           type: string
           attributes:
             - { length: 128 }
+            - { notnull: true }
