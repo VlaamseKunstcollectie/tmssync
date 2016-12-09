@@ -96,7 +96,7 @@ class Destination implements DatabaseInterface {
                 $csv = new CSVReader();
                 $reader = $csv->get($destination);
                 $reader->setOffset(1);
-                $results = $reader->fetchAssoc($columns);
+                $results = $reader->fetchAssoc();
 
                 // Read out each row and store it into the databse
                 foreach ($results as $id => $row) {
