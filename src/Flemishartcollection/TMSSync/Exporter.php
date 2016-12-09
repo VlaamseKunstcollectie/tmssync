@@ -58,7 +58,7 @@ class Exporter extends Command {
      */
     protected function configure() {
         $this->setName('tmssync:export')
-            ->setDescription('Export data from TMS to MySQL');
+            ->setDescription('Export data from TMS to MySQL')
             ->addOption(
                 'fetch',
                 'fe',
