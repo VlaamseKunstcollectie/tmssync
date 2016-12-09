@@ -96,9 +96,7 @@ class Destination implements DatabaseInterface {
                 $csv = new CSVReader();
                 $reader = $csv->get($destination);
                 $reader->setOffset(1);
-                $results = $reader->fetch(function ($row) use ($columns) {
-                    return array_intersect_key($row, array_flip($columns));
-                });
+                $results = $reader->fetchAssoc($columns);
 
                 // Read out each row and store it into the databse
                 foreach ($results as $id => $row) {
@@ -110,9 +108,6 @@ class Destination implements DatabaseInterface {
                         array_unshift($row, $id); // acount for the autoincrement id
 
                         foreach ($row as $key => $value) {
-                            // Fetch only columns from the CSV which are defined
-                            // in schema.yml. If a does not exist placeholders,
-                            // do not bind it.
                             $sth->bindValue($placeholders[$key], $value);
                         }
 
