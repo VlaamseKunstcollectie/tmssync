@@ -1,6 +1,100 @@
 schema:
   tables:
-    objects:
+    ObjContext:
+      primaryKey: id
+      columns:
+        id:
+          name: id
+          type: integer
+          attributes:
+            - { unsigned: true }
+            - { autoincrement: true }
+            - { length: 64 }
+        ObjContextID:
+          name: ObjContextID
+          type: text
+        Culture:
+          name: Culture
+          type: text
+        Style:
+          name: Style
+          type: text
+        Reign:
+          name: Reign
+          type: text
+        Dynasty:
+          name: Dynasty
+          type: text
+        Period:
+          name: Period
+          type: text
+        Movement:
+          name: Movement
+          type: text
+        Nationality:
+          name: Nationality
+          type: text
+        School:
+          name: School
+          type: text
+        SysTimeStamp:
+          name: SysTimeStamp
+          type: text
+        ShortText1:
+          name: ShortText1
+          type: text
+        ShortText2:
+          name: ShortText2
+          type: text
+        ShortText3:
+          name: ShortText3
+          type: text
+        ShortText4:
+          name: ShortText4
+          type: text
+        LongText1:
+          name: LongText1
+          type: text
+        LongText2:
+          name: LongText2
+          type: text
+        LongText3:
+          name: LongText3
+          type: text
+        LongText4:
+          name: LongText4
+          type: text
+        LongText5:
+          name: LongText5
+          type: text
+        LongText6:
+          name: LongText6
+          type: text
+        N_Name:
+          name: N_Name
+          type: text
+        N_Title:
+          name: N_Title
+          type: text
+        N_Description:
+          name: N_Description
+          type: text
+        N_Signed:
+          name: N_Signed
+          type: text
+        N_Markings:
+          name: N_Markings
+          type: text
+        N_Inscription:
+          name: N_Inscription
+          type: text
+        N_Notes:
+          name: N_Notes
+          type: text
+        N_CuratorRemarks:
+          name: N_CuratorRemarks
+          type: text
+    vgsrpObjTombstoneD_RO:
       primaryKey: id
       columns:
         id:

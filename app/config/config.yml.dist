@@ -12,5 +12,5 @@ params:
       user: root
       password: root
     mapping:
-      - { source: foo, destination: bar}
-      - { source: fooz, destination: baz}
+      - { source: dbo.vgsrpObjTombstoneD_RO, destination: vgsrpObjTombstoneD_RO }
+      - { source: dbo.ObjContext, destination: ObjContext}
