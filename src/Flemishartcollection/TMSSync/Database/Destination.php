@@ -104,7 +104,7 @@ class Destination implements DatabaseInterface {
                         $this->connection->beginTransaction();
                         $sth = $this->connection->prepare($sql);
 
-                        $row['id'] = $id; // acount for the autoincrement id
+                        $row['tmsid'] = $id; // acount for the autoincrement id
 
                         foreach ($row as $key => $value) {
                             if (in_array($key, array_keys($placeholders))) {

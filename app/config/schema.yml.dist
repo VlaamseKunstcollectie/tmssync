@@ -1,10 +1,10 @@
 schema:
   tables:
     ClassificationXRefs:
-      primaryKey: id
+      primaryKey: tmsid
       columns:
-        id:
-          name: id
+        tmsid:
+          name: tmsid
           type: integer
           attributes:
             - { unsigned: true }
@@ -32,10 +32,10 @@ schema:
           name: sysTimeStamp
           type: text
     ObjectNames:
-      primaryKey: id
+      primaryKey: tmsid
       columns:
-        id:
-          name: id
+        tmsid:
+          name: tmsid
           type: integer
           attributes:
             - { unsigned: true }
@@ -73,10 +73,10 @@ schema:
           name: LanguageID
           type: text
     ObjContext:
-      primaryKey: id
+      primaryKey: tmsid
       columns:
-        id:
-          name: id
+        tmsid:
+          name: tmsid
           type: integer
           attributes:
             - { unsigned: true }
@@ -172,10 +172,10 @@ schema:
           name: N_CuratorRemarks
           type: text
     vgsrpObjTombstoneD_RO:
-      primaryKey: id
+      primaryKey: tmsid
       columns:
-        id:
-          name: id
+        tmsid:
+          name: tmsid
           type: integer
           attributes:
             - { unsigned: true }
