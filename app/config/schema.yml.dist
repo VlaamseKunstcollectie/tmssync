@@ -1,6 +1,6 @@
 schema:
   tables:
-    ObjectNames
+    ObjectNames:
       primaryKey: id
       columns:
         id:
@@ -20,25 +20,25 @@ schema:
           type: string
           attributes:
             - { length: 128 }
-        ObjectNameTypeID
+        ObjectNameTypeID:
           name: ObjectNameTypeID
           type: text
-        ObjectName
+        ObjectName:
           name: ObjectName
           type: text
-        Remarks
+        Remarks:
           name: Remarks
           type: text
-        Active
+        Active:
           name: Active
           type: text
-        EnteredDate
+        EnteredDate:
           name: EnteredDate
           type: text
-        DisplayOrder
+        DisplayOrder:
           name: DisplayOrder
           type: text
-        LanguageID
+        LanguageID:
           name: LanguageID
           type: text
     ObjContext:
