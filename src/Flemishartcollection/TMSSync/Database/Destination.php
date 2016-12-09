@@ -111,7 +111,7 @@ class Destination implements DatabaseInterface {
                             // Fetch only columns from the CSV which are defined
                             // in schema.yml. If a does not exist placeholders,
                             // do not bind it.
-                            if (array_key_exists($placeholders[$key])) {
+                            if (array_key_exists($key, $placeholders)) {
                                 $sth->bindValue($placeholders[$key], $value);
                             }
                         }
