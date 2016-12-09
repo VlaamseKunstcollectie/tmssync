@@ -5,6 +5,7 @@ params:
       dbname: tms
       user: root
       password: root
+      charset: UTF8
     mssql:
       host: localhost
       driverClass: Lsw\DoctrinePdoDblib\Doctrine\DBAL\Driver\PDODblib\Driver
