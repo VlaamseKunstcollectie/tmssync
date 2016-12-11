@@ -1,5 +1,875 @@
 schema:
   tables:
+    TextStatuses:
+      primaryKey: tmsid
+      columns:
+        tmsid:
+          name: tmsid
+          type: integer
+          attributes:
+            - { unsigned: true }
+            - { autoincrement: true }
+            - { length: 64 }
+        TextStatusID:
+          name: TextStatusID
+          type: text
+        TextStatus:
+          name: TextStatus
+          type: text
+        LoginID:
+          name: LoginID
+          type: text
+        EnteredDate:
+          name: EnteredDate
+          type: text
+        sysTimeStamp:
+          name: sysTimeStamp
+          type: text
+    TextEntries:
+      primaryKey: tmsid
+      columns:
+        tmsid:
+          name: tmsid
+          type: integer
+          attributes:
+            - { unsigned: true }
+            - { autoincrement: true }
+            - { length: 64 }
+        TextEntryID:
+          name: TextEntryID
+          type: text
+        TableID:
+          name: TableID
+          type: text
+        ID:
+          name: ID
+          type: text
+        TextTypeID:
+          name: TextTypeID
+          type: text
+        TextStatusID:
+          name: TextStatusID
+          type: text
+        Purpose:
+          name: Purpose
+          type: text
+        TextDate:
+          name: TextDate
+          type: text
+        LoginID:
+          name: LoginID
+          type: text
+        EnteredDate:
+          name: EnteredDate
+          type: text
+        AuthorConID:
+          name: AuthorConID
+          type: text
+        Remarks:
+          name: Remarks
+          type: text
+        TextEntryHTML:
+          name: TextEntryHTML
+          type: text
+        TextEntry:
+          name: TextEntry
+          type: text
+        LanguageID:
+          name: LanguageID
+          type: text
+        sysTimeStamp:
+          name: sysTimeStamp
+          type: text
+    TextTypes:
+      primaryKey: tmsid
+      columns:
+        tmsid:
+          name: tmsid
+          type: integer
+          attributes:
+            - { unsigned: true }
+            - { autoincrement: true }
+            - { length: 64 }
+        TextTypeID:
+          name: TextTypeID
+          type: text
+        TableID:
+          name: TableID
+          type: text
+        TextType:
+          name: TextType
+          type: text
+        LoginID:
+          name: LoginID
+          type: text
+        EnteredDate:
+          name: EnteredDate
+          type: text
+        sysTimeStamp:
+          name: sysTimeStamp
+          type: text
+    Constituents:
+      primaryKey: tmsid
+      columns:
+        tmsid:
+          name: tmsid
+          type: integer
+          attributes:
+            - { unsigned: true }
+            - { autoincrement: true }
+            - { length: 64 }
+        ConstituentID:
+          name: ConstituentID
+          type: text
+        ConstituentTypeID:
+          name: ConstituentTypeID
+          type: text
+        Active:
+          name: Active
+          type: text
+        AlphaSort:
+          name: AlphaSort
+          type: text
+        LastName:
+          name: LastName
+          type: text
+        FirstName:
+          name: FirstName
+          type: text
+        NameTitle:
+          name: NameTitle
+          type: text
+        Institution:
+          name: Institution
+          type: text
+        LastSoundEx:
+          name: LastSoundEx
+          type: text
+        FirstSoundEx:
+          name: FirstSoundEx
+          type: text
+        InstitutionSoundEx:
+          name: InstitutionSoundEx
+          type: text
+        DisplayName:
+          name: DisplayName
+          type: text
+        BeginDate:
+          name: BeginDate
+          type: text
+        EndDate:
+          name: EndDate
+          type: text
+        DisplayDate:
+          name: DisplayDate
+          type: text
+        Biography:
+          name: Biography
+          type: text
+        Code:
+          name: Code
+          type: text
+        Nationality:
+          name: Nationality
+          type: text
+        School:
+          name: School
+          type: text
+        LoginID:
+          name: LoginID
+          type: text
+        EnteredDate:
+          name: EnteredDate
+          type: text
+        PublicAccessOld:
+          name: PublicAccessOld
+          type: text
+        Remarks:
+          name: Remarks
+          type: text
+        Position:
+          name: Position
+          type: text
+        MiddleName:
+          name: MiddleName
+          type: text
+        Suffix:
+          name: Suffix
+          type: text
+        CultureGroup:
+          name: CultureGroup
+          type: text
+        SysTimeStamp:
+          name: SysTimeStamp
+          type: text
+        N_DisplayName:
+          name: N_DisplayName
+          type: text
+        N_DisplayDate:
+          name: N_DisplayDate
+          type: text
+        salutation:
+          name: salutation
+          type: text
+        Approved:
+          name: Approved
+          type: text
+        PublicAccess:
+          name: PublicAccess
+          type: text
+        IsPrivate:
+          name: IsPrivate
+          type: text
+        DefaultNameID:
+          name: DefaultNameID
+          type: text
+        SystemFlag:
+          name: SystemFlag
+          type: text
+        InternalStatus:
+          name: InternalStatus
+          type: text
+        DefaultDisplayBioID:
+          name: DefaultDisplayBioID
+          type: text
+        BeginDateISO:
+          name: BeginDateISO
+          type: text
+        EndDateISO:
+          name: EndDateISO
+          type: text
+    ThesXrefs:
+      primaryKey: tmsid
+      columns:
+        tmsid:
+          name: tmsid
+          type: integer
+          attributes:
+            - { unsigned: true }
+            - { autoincrement: true }
+            - { length: 64 }
+        ThesXrefID:
+          name: ThesXrefID
+          type: text
+        ThesXrefTypeID:
+          name: ThesXrefTypeID
+          type: text
+        ID:
+          name: ID
+          type: text
+        TableID:
+          name: TableID
+          type: text
+        TermID:
+          name: TermID
+          type: text
+        ThesXrefTableID:
+          name: ThesXrefTableID
+          type: text
+        DisplayOrder:
+          name: DisplayOrder
+          type: text
+        Remarks:
+          name: Remarks
+          type: text
+        Active:
+          name: Active
+          type: text
+        LoginID:
+          name: LoginID
+          type: text
+        EnteredDate:
+          name: EnteredDate
+          type: text
+        RemovedLoginID:
+          name: RemovedLoginID
+          type: text
+        RemovedDate:
+          name: RemovedDate
+          type: text
+        sysTimeStamp:
+          name: sysTimeStamp
+          type: text
+    Terms:
+      primaryKey: tmsid
+      columns:
+        tmsid:
+          name: tmsid
+          type: integer
+          attributes:
+            - { unsigned: true }
+            - { autoincrement: true }
+            - { length: 64 }
+        TermID:
+          name: TermID
+          type: text
+        TermMasterID:
+          name: TermMasterID
+          type: text
+        TermTypeID:
+          name: TermTypeID
+          type: text
+        Term:
+          name: Term
+          type: text
+        LanguageID:
+          name: LanguageID
+          type: text
+        CandidateTerm:
+          name: CandidateTerm
+          type: text
+        LocalTerm:
+          name: LocalTerm
+          type: text
+        EnteredDate:
+          name: EnteredDate
+          type: text
+        LoginID:
+          name: LoginID
+          type: text
+        DisplayOrder:
+          name: DisplayOrder
+          type: text
+        Approved:
+          name: Approved
+          type: text
+        SourceTermID:
+          name: SourceTermID
+          type: text
+        TermLanguageID:
+          name: TermLanguageID
+          type: text
+    TermMaster:
+      primaryKey: tmsid
+      columns:
+        tmsid:
+          name: tmsid
+          type: integer
+          attributes:
+            - { unsigned: true }
+            - { autoincrement: true }
+            - { length: 64 }
+        TermMasterID:
+          name: TermMasterID
+          type: text
+        SourceTermID:
+          name: SourceTermID
+          type: text
+        DateEntered:
+          name: DateEntered
+          type: text
+        DateModified:
+          name: DateModified
+          type: text
+        CN:
+          name: CN
+          type: text
+        ScopeNote:
+          name: ScopeNote
+          type: text
+        HistoryNote:
+          name: HistoryNote
+          type: text
+        ThesaurusBaseID:
+          name: ThesaurusBaseID
+          type: text
+        NodeDepth:
+          name: NodeDepth
+          type: text
+        TermClassID:
+          name: TermClassID
+          type: text
+        Children:
+          name: Children
+          type: text
+        Description:
+          name: Description
+          type: text
+        DescriptionExt:
+          name: DescriptionExt
+          type: text
+        GuideTerm:
+          name: GuideTerm
+          type: text
+        LoginID:
+          name: LoginID
+          type: text
+        Rank:
+          name: Rank
+          type: text
+        RootLevelTMID:
+          name: RootLevelTMID
+          type: text
+    TermClasses:
+      primaryKey: tmsid
+      columns:
+        tmsid:
+          name: tmsid
+          type: integer
+          attributes:
+            - { unsigned: true }
+            - { autoincrement: true }
+            - { length: 64 }
+        TermClassID:
+          name: TermClassID
+          type: text
+        ThesaurusBaseID:
+          name: ThesaurusBaseID
+          type: text
+        TermClass:
+          name: TermClass
+          type: text
+    ThesaurusBases:
+      primaryKey: tmsid
+      columns:
+        tmsid:
+          name: tmsid
+          type: integer
+          attributes:
+            - { unsigned: true }
+            - { autoincrement: true }
+            - { length: 64 }
+        ThesaurusBaseID:
+          name: ThesaurusBaseID
+          type: text
+        ThesXrefTypeID:
+          name: ThesXrefTypeID
+          type: text
+        ID:
+          name: ID
+          type: text
+        TableID:
+          name: TableID
+          type: text
+        TermID:
+          name: TermID
+          type: text
+        ThesXrefTableID:
+          name: ThesXrefTableID
+          type: text
+        DisplayOrder:
+          name: DisplayOrder
+          type: text
+        Remarks:
+          name: Remarks
+          type: text
+        Active:
+          name: Active
+          type: text
+        LoginID:
+          name: LoginID
+          type: text
+        EnteredDate:
+          name: EnteredDate
+          type: text
+        RemovedLoginID:
+          name: RemovedLoginID
+          type: text
+        RemovedDate:
+          name: RemovedDate
+          type: text
+        sysTimeStamp:
+          name: sysTimeStamp
+          type: text
+    DDLanguages:
+      primaryKey: tmsid
+      columns:
+        tmsid:
+          name: tmsid
+          type: integer
+          attributes:
+            - { unsigned: true }
+            - { autoincrement: true }
+            - { length: 64 }
+        LanguageID:
+          name: LanguageID
+          type: text
+        Mnemonic:
+          name: Mnemonic
+          type: text
+        Label:
+          name: Label
+          type: text
+        FieldLevelHelpFile:
+          name: FieldLevelHelpFile
+          type: text
+        IsSystem:
+          name: IsSystem
+          type: text
+        IsForContent:
+          name: IsForContent
+          type: text
+        IsSystemHidden:
+          name: IsSystemHidden
+          type: text
+        IsHidden:
+          name: IsHidden
+          type: text
+        IsRightToLeft:
+          name: IsRightToLeft
+          type: text
+        IsMirrored:
+          name: IsMirrored
+          type: text
+        LanguageFamilyID:
+          name: LanguageFamilyID
+          type: text
+        Region:
+          name: Region
+          type: text
+        Script:
+          name: Script
+          type: text
+        ISO369v1Code:
+          name: ISO369v1Code
+          type: text
+        ISO369v3Code:
+          name: ISO369v3Code
+          type: text
+        ISOScope:
+          name: ISOScope
+          type: text
+        ISOCodeWithLocale:
+          name: ISOCodeWithLocale
+          type: text
+        DisplayOrder:
+          name: DisplayOrder
+          type: text
+        AuthTranslIndex:
+          name: AuthTranslIndex
+          type: text
+        LoginID:
+          name: LoginID
+          type: text
+        EnteredDate:
+          name: EnteredDate
+          type: text
+        LocalLabel:
+          name: LocalLabel
+          type: text
+        sysTimeStamp:
+          name: sysTimeStamp
+          type: text
+    DimensionMethods:
+      primaryKey: tmsid
+      columns:
+        tmsid:
+          name: tmsid
+          type: integer
+          attributes:
+            - { unsigned: true }
+            - { autoincrement: true }
+            - { length: 64 }
+        MethodID:
+          name: MethodID
+          type: text
+        Method:
+          name: Method
+          type: text
+        LoginID:
+          name: LoginID
+          type: text
+        EnteredDate:
+          name: EnteredDate
+          type: text
+        sysTimeStamp:
+          name: sysTimeStamp
+          type: text
+    DimensionUnits:
+      primaryKey: tmsid
+      columns:
+        tmsid:
+          name: tmsid
+          type: integer
+          attributes:
+            - { unsigned: true }
+            - { autoincrement: true }
+            - { length: 64 }
+        UnitID:
+          name: UnitID
+          type: text
+        UnitName:
+          name: UnitName
+          type: text
+        ConversionFactor:
+          name: ConversionFactor
+          type: text
+        UnitTypeID:
+          name: UnitTypeID
+          type: text
+        UnitLabelAtEnd:
+          name: UnitLabelAtEnd
+          type: text
+        IsFractional:
+          name: IsFractional
+          type: text
+        BaseDenominator:
+          name: BaseDenominator
+          type: text
+        DecimalPlaces:
+          name: DecimalPlaces
+          type: text
+        UnitCutoff:
+          name: UnitCutoff
+          type: text
+        UnitsPerSuperUnit:
+          name: UnitsPerSuperUnit
+          type: text
+        UnitLabel:
+          name: UnitLabel
+          type: text
+        SuperUnitLabel:
+          name: SuperUnitLabel
+          type: text
+        LoginID:
+          name: LoginID
+          type: text
+        EnteredDate:
+          name: EnteredDate
+          type: text
+        IsSuperUnit:
+          name: IsSuperUnit
+          type: text
+        sysTimeStamp:
+          name: sysTimeStamp
+          type: text
+    DimUnitTypes:
+      primaryKey: tmsid
+      columns:
+        tmsid:
+          name: tmsid
+          type: integer
+          attributes:
+            - { unsigned: true }
+            - { autoincrement: true }
+            - { length: 64 }
+        UnitTypeID:
+          name: UnitTypeID
+          type: text
+        UnitType:
+          name: UnitType
+          type: text
+        LoginID:
+          name: LoginID
+          type: text
+        EnteredDate:
+          name: EnteredDate
+          type: text
+        sysTimeStamp:
+          name: sysTimeStamp
+          type: text
+    DimensionTypes:
+      primaryKey: tmsid
+      columns:
+        tmsid:
+          name: tmsid
+          type: integer
+          attributes:
+            - { unsigned: true }
+            - { autoincrement: true }
+            - { length: 64 }
+        DimensionTypeID:
+          name: DimensionTypeID
+          type: text
+        DimensionType:
+          name: DimensionType
+          type: text
+        LoginID:
+          name: LoginID
+          type: text
+        EnteredDate:
+          name: EnteredDate
+          type: text
+        UnitTypeID:
+          name: UnitTypeID
+          type: text
+        PrimaryUnitID:
+          name: PrimaryUnitID
+          type: text
+        SecondaryUnitID:
+          name: SecondaryUnitID
+          type: text
+        System:
+          name: System
+          type: text
+        sysTimeStamp:
+          name: sysTimeStamp
+          type: text
+    DimElemTypeXrefs:
+      primaryKey: tmsid
+      columns:
+        tmsid:
+          name: tmsid
+          type: integer
+          attributes:
+            - { unsigned: true }
+            - { autoincrement: true }
+            - { length: 64 }
+        ElementID:
+          name: ElementID
+          type: text
+        DimensionTypeID:
+          name: DimensionTypeID
+          type: text
+        DimElemTypeXrefID:
+          name: DimElemTypeXrefID
+          type: text
+        PrimaryUnitID:
+          name: PrimaryUnitID
+          type: text
+        SecondaryUnitID:
+          name: SecondaryUnitID
+          type: text
+        Displayed:
+          name: Displayed
+          type: text
+        Rank:
+          name: Rank
+          type: text
+        LoginID:
+          name: LoginID
+          type: text
+        EnteredDate:
+          name: EnteredDate
+          type: text
+        sysTimeStamp:
+          name: sysTimeStamp
+          type: text
+    DimensionElements:
+      primaryKey: tmsid
+      columns:
+        tmsid:
+          name: tmsid
+          type: integer
+          attributes:
+            - { unsigned: true }
+            - { autoincrement: true }
+            - { length: 64 }
+        ElementID:
+          name: ElementID
+          type: text
+        Element:
+          name: Element
+          type: text
+        LoginID:
+          name: LoginID
+          type: text
+        EnteredDate:
+          name: EnteredDate
+          type: text
+        Displayed:
+          name: Displayed
+          type: text
+        ShowElementName:
+          name: ShowElementName
+          type: text
+        ShowDescription:
+          name: ShowDescription
+          type: text
+        Position:
+          name: Position
+          type: text
+        ShowSecondaryUnit:
+          name: ShowSecondaryUnit
+          type: text
+        sysTimeStamp:
+          name: sysTimeStamp
+          type: text
+    Dimensions:
+      primaryKey: tmsid
+      columns:
+        tmsid:
+          name: tmsid
+          type: integer
+          attributes:
+            - { unsigned: true }
+            - { autoincrement: true }
+            - { length: 64 }
+        DimensionID:
+          name: DimensionID
+          type: text
+        DimItemElemXrefID:
+          name: DimItemElemXrefID
+          type: text
+        DimensionTypeID:
+          name: DimensionTypeID
+          type: text
+        PrimaryUnitID:
+          name: PrimaryUnitID
+          type: text
+        SecondaryUnitID:
+          name: SecondaryUnitID
+          type: text
+        Displayed:
+          name: Displayed
+          type: text
+        Rank:
+          name: Rank
+          type: text
+        LoginID:
+          name: LoginID
+          type: text
+        EnteredDate:
+          name: EnteredDate
+          type: text
+        Dimension:
+          name: Dimension
+          type: text
+        sysTimeStamp:
+          name: sysTimeStamp
+          type: text
+    DimItemElemXrefs:
+      primaryKey: tmsid
+      columns:
+        tmsid:
+          name: tmsid
+          type: integer
+          attributes:
+            - { unsigned: true }
+            - { autoincrement: true }
+            - { length: 64 }
+        DimItemElemXrefID:
+          name: DimItemElemXrefID
+          type: text
+        TableID:
+          name: TableID
+          type: text
+        ID:
+          name: ID
+          type: text
+        ElementID:
+          name: ElementID
+          type: text
+        MethodID:
+          name: MethodID
+          type: text
+        Displayed:
+          name: Displayed
+          type: text
+        Rank:
+          name: Rank
+          type: text
+        DimensionDate:
+          name: DimensionDate
+          type: text
+        DisplayDimensions:
+          name: DisplayDimensions
+          type: text
+        Description:
+          name: Description
+          type: text
+        Remarks:
+          name: Remarks
+          type: text
+        LoginID:
+          name: LoginID
+          type: text
+        EnteredDate:
+          name: EnteredDate
+          type: text
+        sysTimeStamp:
+          name: sysTimeStamp
+          type: text
     Classifications:
       primaryKey: tmsid
       columns:

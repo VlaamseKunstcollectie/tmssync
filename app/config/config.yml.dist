@@ -16,5 +16,23 @@ params:
       - { source: dbo.vgsrpObjTombstoneD_RO, destination: vgsrpObjTombstoneD_RO }
       - { source: dbo.ObjContext, destination: ObjContext }
       - { source: dbo.ObjectNames, destination: ObjectNames }
-      - { source: dbo.ClassificationXRefs destination: ClassificationXRefs }
-      - { source: dbo.Classifications destination: Classifications }
+      - { source: dbo.ClassificationXRefs, destination: ClassificationXRefs }
+      - { source: dbo.Classifications, destination: Classifications }
+      - { source: dbo.DimItemElemXrefs, destination: DimItemElemXrefs }
+      - { source: dbo.Dimensions, destination: Dimensions }
+      - { source: dbo.DimensionElements, destination: DimensionElements }
+      - { source: dbo.DimElemTypeXrefs, destination: DimElemTypeXrefs }
+      - { source: dbo.DimensionTypes, destination: DimensionTypes }
+      - { source: dbo.DimUnitTypes, destination: DimUnitTypes }
+      - { source: dbo.DimensionUnits, destination: DimensionUnits }
+      - { source: dbo.DimensionMethods, destination: DimensionMethods }
+      - { source: dbo.DDLanguages, destination: DDLanguages }
+      - { source: dbo.ThesaurusBases, destination: ThesaurusBases }
+      - { source: dbo.TermClasses, destination: TermClasses }
+      - { source: dbo.TermMaster, destination: TermMaster }
+      - { source: dbo.Terms, destination: Terms }
+      - { source: dbo.ThesXrefs, destination: ThesXrefs }
+      - { source: dbo.Constituents, destination: Constituents }
+      - { source: dbo.TextTypes, destination: TextTypes }
+      - { source: dbo.TextEntries, destination: TextEntries }
+      - { source: dbo.TextStatuses, destination: TextStatuses }
