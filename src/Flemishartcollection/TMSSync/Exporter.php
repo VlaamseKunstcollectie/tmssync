@@ -88,7 +88,9 @@ class Exporter extends Command {
 
         $logger->pushHandler(new ConsoleHandler($output, true, $verbosityLevelMap));
         $logger->pushProcessor(new PsrLogMessageProcessor());
+
         $this->destination->setLogger($logger);
+        $this->source->setLogger($logger);
 
         if ($input->getOption('fetch')) {
             // Truncate all Destination database tables.
