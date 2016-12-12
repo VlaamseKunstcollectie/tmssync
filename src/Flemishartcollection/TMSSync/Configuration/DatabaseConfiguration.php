@@ -87,6 +87,8 @@ class DatabaseConfiguration implements ConfigurationInterface {
             ->arrayNode('mapping')
               ->prototype('array')
                 ->children()
+                  ->scalarNode('db')
+                    ->end()
                   ->scalarNode('source')
                     ->end()
                   ->scalarNode('destination')->end()

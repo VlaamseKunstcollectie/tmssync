@@ -240,6 +240,55 @@ schema:
         EndDateISO:
           name: EndDateISO
           type: text
+    ThesXrefTypes:
+      primaryKey: tmsid
+      columns:
+        tmsid:
+          name: tmsid
+          type: integer
+          attributes:
+            - { unsigned: true }
+            - { autoincrement: true }
+            - { length: 64 }
+        ThesXrefTypeID:
+          name: ThesXrefTypeID
+          type: text
+        ThesXrefType:
+          name: ThesXrefType
+          type: text
+        TableID:
+          name: TableID
+          type: text
+        ThesXrefTableID:
+          name: ThesXrefTableID
+          type: text
+        MultiSelect:
+          name: MultiSelect
+          type: text
+        ArchiveDeletes:
+          name: ArchiveDeletes
+          type: text
+        TermMasterID:
+          name: TermMasterID
+          type: text
+        ShowGuideTerms:
+          name: ShowGuideTerms
+          type: text
+        BroadestTermFirst:
+          name: BroadestTermFirst
+          type: text
+        NumLevels:
+          name: NumLevels
+          type: text
+        LoginID:
+          name: LoginID
+          type: text
+        EnteredDate:
+          name: EnteredDate
+          type: text
+        sysTimeStamp:
+          name: sysTimeStamp
+          type: text
     ThesXrefs:
       primaryKey: tmsid
       columns:

@@ -53,7 +53,7 @@ class Source implements DatabaseInterface {
      * {@inheritdoc}
      */
     public function setConnection(Connection $connection) {
-        $this->connection = $connection->getConnection('mssql');
+        $this->connection = $connection;
     }
 
     /**
@@ -70,31 +70,43 @@ class Source implements DatabaseInterface {
      * @return boolean true when the operation was completed succesfully.
      */
     public function fetch() {
-        $mappings = $this->parameters['mapping'];
+        $mapping = $this->parameters['mapping'];
         $tables = $this->parameters['tables'];
 
-        foreach ($mappings as $mapping) {
-            $destination = $mapping['destination'];
-            $source = $mapping['source'];
+        // Group the mappings by 'db' key.
+        $databases = array();
+        foreach ($mapping as $key => $val) {
+            $databases[$val['db']][] = $val;
+        }
 
-            // Get all data from this table
-            $sql = sprintf("SELECT * FROM %s", $source);
-            $rows = $this->connection->query($sql)->fetchAll();
+        // Loop over each database.
+        foreach ($databases as $db => $tableMapping) {
+            $connection = $this->connection->getConnection($db)
 
-            // Get the header
-            $header = array_keys($rows[0]);
+            // Loop over each table mapping
+            foreach ($tableMapping as $mapping) {
+                $destination = $mapping['destination'];
+                $source = $mapping['source'];
 
-            if (isset($tables[$destination])) {
-                $csv = new CSVWriter();
-                $csv->createCSV($destination);
-                $csv->setHeader($header);
+                // Get all data from this table
+                $sql = sprintf("SELECT * FROM %s", $source);
+                $rows = $connection->query($sql)->fetchAll();
 
-                foreach ($rows as $row) {
-                    $csv->insertONe($row);
+                // Get the header
+                $header = array_keys($rows[0]);
+
+                if (isset($tables[$destination])) {
+                    $csv = new CSVWriter();
+                    $csv->createCSV($destination);
+                    $csv->setHeader($header);
+
+                    foreach ($rows as $row) {
+                        $csv->insertONe($row);
+                    }
+
+                    // SELECT and FETCH from the database. Store it to CSV if any.
+                    // MAPPING HAPPENS HERE!!!
                 }
-
-                // SELECT and FETCH from the database. Store it to CSV if any.
-                // MAPPING HAPPENS HERE!!!
             }
         }
     }
