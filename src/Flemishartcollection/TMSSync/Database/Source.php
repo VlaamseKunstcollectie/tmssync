@@ -15,6 +15,7 @@ use Flemishartcollection\TMSSync\Database\Connection;
 use Flemishartcollection\TMSSync\Database\DatabaseInterface;
 use Flemishartcollection\TMSSync\Configuration\Configuration as Parameters;
 use Flemishartcollection\TMSSync\Filesystem\CSVWriter;
+use Monolog\Logger;
 
 /**
  * Source class
@@ -36,13 +37,16 @@ class Source implements DatabaseInterface {
      */
     private $parameters;
 
+    private $logger;
+
     /**
      * Constructor
      *
      * @param Flemishartcollection\TMSSync\Configuration\Configuration App specific parameters
      */
-    public function __construct(Parameters $parameters) {
+    public function __construct(Parameters $parameters, Logger $logger) {
         $this->parameters = $parameters->process();
+        $this->logger = $logger;
     }
 
     /**

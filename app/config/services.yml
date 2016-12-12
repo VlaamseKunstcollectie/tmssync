@@ -16,12 +16,12 @@ services:
       - [setDestination, ['@flemishartcollection.database.destination']]
   flemishartcollection.database.destination:
     class: Flemishartcollection\TMSSync\Database\Destination
-    arguments: ['@flemishartcollection.configuration.configuration']
+    arguments: ['@flemishartcollection.configuration.configuration', '@monolog.logger']
     calls:
       - [setConnection, ['@flemishartcollection.database.connection']]
   flemishartcollection.database.source:
     class: Flemishartcollection\TMSSync\Database\Source
-    arguments: ['@flemishartcollection.configuration.configuration']
+    arguments: ['@flemishartcollection.configuration.configuration', '@monolog.logger']
     calls:
       - [setConnection, ['@flemishartcollection.database.connection']]
   flemishartcollection.database.connection:
@@ -36,3 +36,10 @@ services:
     class: Symfony\Component\Console\Application
   symfony.component.config.definition.processor:
     class: Symfony\Component\Config\Definition\Processor
+  monolog.logger:
+    class: Monolog\Logger
+    arguments: ['console']
+    calls:
+      - [pushHandler, ['@symfony.bridge.monolog.handler.consolehandler']]
+  symfony.bridge.monolog.handler.consolehandler:
+    class: Symfony\Bridge\Monolog\Handler\ConsoleHandler

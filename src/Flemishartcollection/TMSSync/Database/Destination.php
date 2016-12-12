@@ -15,6 +15,8 @@ use Flemishartcollection\TMSSync\Database\Connection;
 use Flemishartcollection\TMSSync\Database\DatabaseInterface;
 use Flemishartcollection\TMSSync\Configuration\Configuration as Parameters;
 use Flemishartcollection\TMSSync\Filesystem\CSVReader;
+use Flemishartcollection\TMSSync\Logger\Logger;
+use Monolog\Logger;
 
 /**
  * Destination class
@@ -36,13 +38,16 @@ class Destination implements DatabaseInterface {
      */
     private $parameters;
 
+    private $logger;
+
     /**
      * Constructor
      *
      * @param Flemishartcollection\TMSSync\Configuration\Configuration App specific parameters
      */
-    public function __construct(Parameters $parameters) {
+    public function __construct(Parameters $parameters, Logger $logger) {
         $this->parameters = $parameters->process();
+        $this->logger = $logger;
     }
 
     /**
@@ -189,6 +194,8 @@ class Destination implements DatabaseInterface {
                 $table->addColumn($colProps['name'], $colProps['type'], $attributes);
             }
             $table->setPrimaryKey(array($props['primaryKey']));
+
+            $this->logger->addInfo('Created table', ['table' => $tableName])
         }
 
         $platform = $this->connection->getDatabasePlatform();
