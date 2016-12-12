@@ -190,6 +190,9 @@ class Destination implements DatabaseInterface {
                         $attributes = array_filter($colProps['attributes'][0]);
                     }
                 }
+
+                $attributes["notnull"] = false;
+
                 $table->addColumn($colProps['name'], $colProps['type'], $attributes);
             }
             $table->setPrimaryKey(array($props['primaryKey']));

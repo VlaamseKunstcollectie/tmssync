@@ -209,7 +209,7 @@ schema:
           name: N_DisplayDate
           type: text
           attributes:
-            - { notnull: true }
+            - { notnull: false }
         salutation:
           name: salutation
           type: text
