@@ -81,7 +81,7 @@ class Source implements DatabaseInterface {
 
         // Loop over each database.
         foreach ($databases as $db => $tableMapping) {
-            $connection = $this->connection->getConnection($db)
+            $connection = $this->connection->getConnection($db);
 
             // Loop over each table mapping
             foreach ($tableMapping as $mapping) {
