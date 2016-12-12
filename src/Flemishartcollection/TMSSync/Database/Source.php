@@ -114,7 +114,6 @@ class Source implements DatabaseInterface {
 
                 if (isset($tables[$destination])) {
                     $csv = new CSVWriter();
-                    $csv->appendStreamFilter('convert.iconv.ISO-8859-1/UTF-8');
                     $csv->createCSV($destination);
                     $csv->setHeader($header);
 
