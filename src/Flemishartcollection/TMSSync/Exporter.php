@@ -69,7 +69,7 @@ class Exporter extends Command {
                 InputOption::VALUE_OPTIONAL,
                 'Fetch data from TMS source?',
                 true
-            );
+            )
             ->addOption(
                 'exclusive',
                 'ex',
