@@ -15,7 +15,6 @@ use Flemishartcollection\TMSSync\Database\Connection;
 use Flemishartcollection\TMSSync\Database\DatabaseInterface;
 use Flemishartcollection\TMSSync\Configuration\Configuration as Parameters;
 use Flemishartcollection\TMSSync\Filesystem\CSVReader;
-use Flemishartcollection\TMSSync\Logger\Logger;
 use Monolog\Logger;
 
 /**
