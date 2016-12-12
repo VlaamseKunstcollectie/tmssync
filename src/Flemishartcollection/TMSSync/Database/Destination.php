@@ -194,7 +194,7 @@ class Destination implements DatabaseInterface {
             }
             $table->setPrimaryKey(array($props['primaryKey']));
 
-            $this->logger->addInfo('Created table', ['table' => $tableName])
+            $this->logger->addInfo('Created table', ['table' => $tableName]);
         }
 
         $platform = $this->connection->getDatabasePlatform();
