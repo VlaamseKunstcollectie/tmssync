@@ -208,6 +208,8 @@ schema:
         N_DisplayDate:
           name: N_DisplayDate
           type: text
+          attributes:
+            - { notnull: true }
         salutation:
           name: salutation
           type: text
