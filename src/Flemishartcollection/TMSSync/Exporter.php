@@ -70,6 +70,13 @@ class Exporter extends Command {
                 'Fetch data from TMS source?',
                 true
             );
+            ->addOption(
+                'exclusive',
+                'ex',
+                InputOption::VALUE_OPTIONAL,
+                'Only fetch data for these defined tables. Comma separated list.',
+                false
+            );
     }
 
     /**
@@ -92,15 +99,21 @@ class Exporter extends Command {
         $this->destination->setLogger($logger);
         $this->source->setLogger($logger);
 
+        // Process only these tables
+        $exclusive = array();
+        if ($exclusive = $input->getOption('exclusive')) {
+            $exclusive = explode(',', $exclusive);
+        }
+
         if ($input->getOption('fetch')) {
             // Truncate all Destination database tables.
-            $this->destination->truncate();
+            $this->destination->truncate($exclusive);
 
             // Fetch data from Source database tables and write to temp CSV files
-            $this->source->fetch();
+            $this->source->fetch($exclusive);
         }
 
         // Read out CSV files and store in Destination database tables
-        $this->destination->dump();
+        $this->destination->dump($exclusive);
     }
 }

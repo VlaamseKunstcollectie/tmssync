@@ -72,7 +72,7 @@ class Source implements DatabaseInterface {
      * @throws Exception An exception if something goes wrong.
      * @return boolean true when the operation was completed succesfully.
      */
-    public function fetch() {
+    public function fetch($exclusive = array()) {
         $mapping = $this->parameters['mapping'];
         $tables = $this->parameters['tables'];
 
@@ -94,6 +94,14 @@ class Source implements DatabaseInterface {
             foreach ($tableMapping as $mapping) {
                 $destination = $mapping['destination'];
                 $source = $mapping['source'];
+
+                // Skip table if in exclusive mode
+                if (!empty($exclusive)) {
+                    if (!in_array($destination, $exclusive)) {
+                        $this->logger->warning('Skipping table {source}', ['source' => $source]);
+                        continue;
+                    }
+                }
 
                 $this->logger->info('Fetching from table {source}', ['source' => $source]);
 

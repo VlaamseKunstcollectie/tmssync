@@ -77,7 +77,7 @@ class Destination implements DatabaseInterface {
      *  - The table structure in schema has to mirror the structure of the CSV
      *    file. Mismatches will result in a SQL error upon inserting data.
      */
-    public function dump() {
+    public function dump($exclusive = array()) {
         $mappings = $this->parameters['mapping'];
         $tables = $this->parameters['tables'];
 
@@ -85,6 +85,14 @@ class Destination implements DatabaseInterface {
 
         foreach ($mappings as $mapping) {
             $destination = $mapping['destination'];
+
+            // Skip table if in exclusive mode
+            if (!empty($exclusive)) {
+                if (!in_array($destination, $exclusive)) {
+                    $this->logger->warning('Skipping table {destination}', ['destination' => $destination]);
+                    continue;
+                }
+            }
 
             $this->logger->info('Dumping to {destination}', ['destination' => $destination]);
 
@@ -146,9 +154,18 @@ class Destination implements DatabaseInterface {
      *   table
      * @return boolean True if truncate was succesful.
      */
-    public function truncate() {
+    public function truncate($exclusive) {
         $tables = array_keys($this->parameters['tables']);
         foreach ($tables as $tableName) {
+
+            // Skip table if in exclusive mode
+            if (!empty($exclusive)) {
+                if (!in_array($tableName, $exclusive)) {
+                    $this->logger->warning('Skipping table {tableName}', ['tableName' => $tableName]);
+                    continue;
+                }
+            }
+
             $this->connection->beginTransaction();
             try {
                 $this->connection->query('SET FOREIGN_KEY_CHECKS=0');
