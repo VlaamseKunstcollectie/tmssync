@@ -56,6 +56,10 @@ class Destination implements DatabaseInterface {
         $this->connection = $connection->getConnection('mysql');
     }
 
+    public function setLogger(Logger $logger) {
+        $this->logger = $logger;
+    }
+
     /**
      * Dump tables from CSV to MySQL destination.
      *
@@ -78,8 +82,12 @@ class Destination implements DatabaseInterface {
         $mappings = $this->parameters['mapping'];
         $tables = $this->parameters['tables'];
 
+        $this->logger->info('**** DUMPING DATA TO DESTINATION DATABASE');
+
         foreach ($mappings as $mapping) {
             $destination = $mapping['destination'];
+
+            $this->logger->info('Dumping to {destination}', ['destination' => $destination]);
 
             if (isset($tables[$destination])) {
                 // Fetch columns from config
@@ -120,9 +128,11 @@ class Destination implements DatabaseInterface {
                         $this->connection->commit();
                     } catch (Exception $e) {
                         $this->connection->rollback();
-                        throw $e; // bubble up to command
+                        $this->logger->error($e->getMessage());
                     }
                 }
+
+                $this->logger->info('DONE dumping to {destination}', ['destination' => $destination]);
             }
         }
     }
@@ -146,9 +156,10 @@ class Destination implements DatabaseInterface {
                 $this->connection->query(sprintf('DELETE FROM %s', $tableName));
                 $this->connection->query('SET FOREIGN_KEY_CHECKS=1');
                 $this->connection->commit();
+                $this->logger->info('table {table} has been truncated', ['table' => $tableName]);
             } catch (Exception $e) {
                 $this->connection->rollback();
-                throw $e; // bubble up to command
+                $this->logger->error($e->getMessage());
             }
 
             // @todo
@@ -197,13 +208,18 @@ class Destination implements DatabaseInterface {
             }
             $table->setPrimaryKey(array($props['primaryKey']));
 
-            $this->logger->addInfo('Created table', ['table' => $tableName]);
+            $this->logger->info('Prepared {table}', ['table' => $tableName]);
         }
 
         $platform = $this->connection->getDatabasePlatform();
         $queries = $schema->toSql($platform);
         foreach ($queries as $query) {
-            $this->connection->query($query);
+            try {
+                $this->connection->query($query);
+            } catch (Exception $e) {
+                $this->logger->error($e->getMessage());
+            }
         }
+        $this->logger->info('Done!');
     }
 }

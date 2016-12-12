@@ -12,7 +12,10 @@ namespace Flemishartcollection\TMSSync;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Bridge\Monolog\Handler\ConsoleHandler;
 use Flemishartcollection\TMSSync\Database\Destination;
+use Monolog\Logger;
+use Monolog\Processor\PsrLogMessageProcessor;
 
 /**
  * Installer.
@@ -49,6 +52,20 @@ class Installer extends Command {
      * {@inheritdoc}
      */
     protected function execute(InputInterface $input, OutputInterface $output) {
+        $logger = new Logger('console');
+
+        $verbosityLevelMap = array(
+            OutputInterface::VERBOSITY_NORMAL => Logger::ERROR,
+            OutputInterface::VERBOSITY_NORMAL => Logger::WARNING,
+            OutputInterface::VERBOSITY_NORMAL => Logger::NOTICE,
+            OutputInterface::VERBOSITY_NORMAL => Logger::INFO,
+            OutputInterface::VERBOSITY_NORMAL => Logger::DEBUG,
+        );
+
+        $logger->pushHandler(new ConsoleHandler($output, true, $verbosityLevelMap));
+        $logger->pushProcessor(new PsrLogMessageProcessor());
+        $this->destination->setLogger($logger);
+
         $this->destination->createSchema();
     }
 }

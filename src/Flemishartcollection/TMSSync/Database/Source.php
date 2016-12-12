@@ -44,9 +44,8 @@ class Source implements DatabaseInterface {
      *
      * @param Flemishartcollection\TMSSync\Configuration\Configuration App specific parameters
      */
-    public function __construct(Parameters $parameters, Logger $logger) {
+    public function __construct(Parameters $parameters) {
         $this->parameters = $parameters->process();
-        $this->logger = $logger;
     }
 
     /**
@@ -54,6 +53,10 @@ class Source implements DatabaseInterface {
      */
     public function setConnection(Connection $connection) {
         $this->connection = $connection;
+    }
+
+    public function setLogger(Logger $logger) {
+        $this->logger = $logger;
     }
 
     /**
@@ -73,6 +76,8 @@ class Source implements DatabaseInterface {
         $mapping = $this->parameters['mapping'];
         $tables = $this->parameters['tables'];
 
+        $this->logger->info('**** DUMPING DATA TO SOURCE');
+
         // Group the mappings by 'db' key.
         $databases = array();
         foreach ($mapping as $key => $val) {
@@ -83,10 +88,14 @@ class Source implements DatabaseInterface {
         foreach ($databases as $db => $tableMapping) {
             $connection = $this->connection->getConnection($db);
 
+            $this->logger->info('Fetching from {database}', ['database' => $db]);
+
             // Loop over each table mapping
             foreach ($tableMapping as $mapping) {
                 $destination = $mapping['destination'];
                 $source = $mapping['source'];
+
+                $this->logger->info('Fetching from table {source}', ['source' => $source]);
 
                 // Get all data from this table
                 $sql = sprintf("SELECT * FROM %s", $source);
@@ -107,6 +116,8 @@ class Source implements DatabaseInterface {
                     // SELECT and FETCH from the database. Store it to CSV if any.
                     // MAPPING HAPPENS HERE!!!
                 }
+
+                $this->logger->info('DONE fetching from table {source}', ['source' => $source]);
             }
         }
     }
