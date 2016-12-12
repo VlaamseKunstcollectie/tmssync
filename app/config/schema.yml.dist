@@ -483,41 +483,62 @@ schema:
         ThesaurusBaseID:
           name: ThesaurusBaseID
           type: text
-        ThesXrefTypeID:
-          name: ThesXrefTypeID
+        ThesaurusBase:
+          name: ThesaurusBase
           type: text
-        ID:
-          name: ID
+        DateEntered:
+          name: DateEntered
           type: text
-        TableID:
-          name: TableID
+        DateModified:
+          name: DateModified
           type: text
-        TermID:
-          name: TermID
+        Mnemonic:
+          name: Mnemonic
           type: text
-        ThesXrefTableID:
-          name: ThesXrefTableID
+        Source:
+          name: Source
           type: text
-        DisplayOrder:
-          name: DisplayOrder
+        ScopeNote:
+          name: ScopeNote
           type: text
-        Remarks:
-          name: Remarks
+        HistoryNote:
+          name: HistoryNote
           type: text
-        Active:
-          name: Active
+        InstalledVersion:
+          name: InstalledVersion
+          type: text
+        TermIncrement:
+          name: TermIncrement
+          type: text
+        CreditLine:
+          name: CreditLine
+          type: text
+        CNTemplateDelim:
+          name: CNTemplateDelim
+          type: text
+        CNTemplate:
+          name: CNTemplate
+          type: text
+        ThesaurusType:
+          name: ThesaurusType
+          type: text
+        CNType:
+          name: CNType
+          type: text
+        DefaultLanguageID:
+          name: DefaultLanguageID
+          type: text
+        GuideTermPrefix:
+          name: GuideTermPrefix
+          type: text
+        GuideTermSuffix:
+          name: GuideTermSuffix
+          type: text
+        PathDelimiter:
+          name: PathDelimiter
           type: text
         LoginID:
           name: LoginID
-          type: text
-        EnteredDate:
-          name: EnteredDate
-          type: text
-        RemovedLoginID:
-          name: RemovedLoginID
-          type: text
-        RemovedDate:
-          name: RemovedDate
           type: text
         sysTimeStamp:
           name: sysTimeStamp

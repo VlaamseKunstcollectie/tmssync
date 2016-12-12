@@ -44,9 +44,8 @@ class Destination implements DatabaseInterface {
      *
      * @param Flemishartcollection\TMSSync\Configuration\Configuration App specific parameters
      */
-    public function __construct(Parameters $parameters, Logger $logger) {
+    public function __construct(Parameters $parameters) {
         $this->parameters = $parameters->process();
-        $this->logger = $logger;
     }
 
     /**
