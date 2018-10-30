@@ -62,7 +62,6 @@ class CSVWriter {
         }
         $this->file = sprintf("%s/%s.csv", $this->basepath, $name);
         $this->writer = Writer::createFromPath($this->file, "w");
-        $this->writer->appendStreamFilter('convert.iconv.ISO-8859-1/UTF-8');
         $this->writer->setOutputBOM(Writer::BOM_UTF8);
     }
 
