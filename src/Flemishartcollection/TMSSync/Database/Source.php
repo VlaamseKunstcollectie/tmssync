@@ -105,8 +105,17 @@ class Source implements DatabaseInterface {
 
                 $this->logger->info('Fetching from table {source}', ['source' => $source]);
 
+                // We use the destination mapping. This is iffy since we introduce the 
+                // convention that tables in Source and Destination are mirrored.
+                // Advantage: We avoid mirroring schema.yml for the Source.
+                $columns = array_map(function ($props) {
+                    return $props['name'];
+                }, $tables[$destination]['columns']);
+                array_shift($columns); // Get rid of tmsid since it doesn't exist in Source.
+                $cols = implode(',', $columns);
+
                 // Get all data from this table
-                $sql = sprintf("SELECT * FROM %s", $source);
+                $sql = sprintf("SELECT %s FROM %s", $cols, $source);
                 $rows = $connection->query($sql)->fetchAll();
 
                 // Get the header
