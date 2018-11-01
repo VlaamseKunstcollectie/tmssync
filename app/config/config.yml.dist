@@ -12,14 +12,8 @@ params:
       dbname: tms
       user: root
       password: root
-    tmsthesaurus:
-      host: localhost
-      driverClass: Lsw\DoctrinePdoDblib\Doctrine\DBAL\Driver\PDODblib\Driver
-      dbname: TMSThesaurus
-      user: root
-      password: root
     mapping:
-      - { db: tms, source: dbo.vgsrpObjTombstoneD_RO, destination: vgsrpObjTombstoneD_RO }
+      - { db: tms, source: dbo.Objects, destination: Objects }
       - { db: tms, source: dbo.ObjContext, destination: ObjContext }
       - { db: tms, source: dbo.ObjectNames, destination: ObjectNames }
       - { db: tms, source: dbo.ClassificationXRefs, destination: ClassificationXRefs }
@@ -34,12 +28,21 @@ params:
       - { db: tms, source: dbo.DimensionMethods, destination: DimensionMethods }
       - { db: tms, source: dbo.DDLanguages, destination: DDLanguages }
       - { db: tms, source: dbo.Constituents, destination: Constituents }
+      - { db: tms, source: dbo.ConXrefs, destination: ConXrefs }
+      - { db: tms, source: dbo.ConXrefDetails, destination: ConXrefDetails }
+      - { db: tms, source: dbo.Roles, destination: Roles }
+      - { db: tms, source: dbo.RoleTypes, destination: RoleTypes }
       - { db: tms, source: dbo.TextTypes, destination: TextTypes }
       - { db: tms, source: dbo.TextEntries, destination: TextEntries }
       - { db: tms, source: dbo.TextStatuses, destination: TextStatuses }
       - { db: tms, source: dbo.ThesXrefs, destination: ThesXrefs }
       - { db: tms, source: dbo.ThesXrefTypes, destination: ThesXrefTypes }
-      - { db: tmsthesaurus, source: dbo.ThesaurusBases, destination: ThesaurusBases }
-      - { db: tmsthesaurus, source: dbo.TermClasses, destination: TermClasses }
-      - { db: tmsthesaurus, source: dbo.TermMaster, destination: TermMaster }
-      - { db: tmsthesaurus, source: dbo.Terms, destination: Terms }
+      - { db: tms, source: dbo.ThesaurusBases, destination: ThesaurusBases }
+      - { db: tms, source: dbo.TermClasses, destination: TermClasses }
+      - { db: tms, source: dbo.TermMaster, destination: TermMaster }
+      - { db: tms, source: dbo.Terms, destination: Terms }
+      - { db: tms, source: dbo.UserFieldXrefs, destination: UserFieldXrefs }
+      - { db: tms, source: dbo.ObjTitles, destination: ObjTitles }
+      - { db: tms, source: dbo.TitleTypes, destination: TitleTypes }
+      - { db: tms, source: dbo.CITvgsrpObjTombstoneD_RO, destination: CITvgsrpObjTombstoneD_RO }
+      - { db: tms, source: dbo.Departments, destination: Departments }
