@@ -1718,6 +1718,47 @@ schema:
           type: string
           attributes:
             - { length: 128 }
+    Associations:
+      primaryKey: tmsid
+      columns:
+        tmsid:
+          name: tmsid
+          type: integer
+          attributes:
+            - { unsigned: true }
+            - { autoincrement: true }
+            - { length: 64 }
+        AssociationID:
+          name: AssociationID
+          type: text
+        ID1:
+          name: ID1
+          type: text
+        ID2:
+          name: ID2
+          type: text
+        RelationshipID:
+          name: RelationshipID
+          type: text
+    Relationships:
+      primaryKey: tmsid
+      columns:
+        tmsid:
+          name: tmsid
+          type: integer
+          attributes:
+            - { unsigned: true }
+            - { autoincrement: true }
+            - { length: 64 }
+        Relation1:
+          name: Relation1
+          type: text
+        Relation2:
+          name: Relation2
+          type: text
+        RelationshipID:
+          name: RelationshipID
+          type: text
     CITvgsrpObjTombstoneD_RO:
       primaryKey: tmsid
       columns:
