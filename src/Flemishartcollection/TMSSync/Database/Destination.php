@@ -114,7 +114,6 @@ class Destination implements DatabaseInterface {
                 // Open up the associated CSV file for the selected destination
                 $csv = new CSVReader();
                 $reader = $csv->get($destination);
-                $reader->setOffset(1);
                 $results = $reader->fetchAssoc();
 
                 // Read out each row and store it into the databse
