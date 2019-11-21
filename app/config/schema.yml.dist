@@ -1656,9 +1656,6 @@ schema:
         SearchObjectNumber:
           name: SearchObjectNumber
           type: text
-        GSRowVersion:
-          name: GSRowVersion
-          type: text
         SortSearchNumber:
           name: SortSearchNumber
           type: text
