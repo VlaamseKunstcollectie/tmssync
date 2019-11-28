@@ -1756,6 +1756,28 @@ schema:
         RelationshipID:
           name: RelationshipID
           type: text
+    AltNums:
+      primaryKey: tmsid
+      columns:
+        tmsid:
+          name: tmsid
+          type: integer
+          attributes:
+            - { unsigned: true }
+            - { autoincrement: true }
+            - { length: 64 }
+        AltNum:
+          name: AltNum
+          type: text
+        AltNumID:
+          name: AltNumID
+          type: text
+        Description:
+          name: Description
+          type: text
+        ID:
+          name: ID
+          type: text
     CITvgsrpObjTombstoneD_RO:
       primaryKey: tmsid
       columns:

@@ -48,3 +48,4 @@ params:
       - { db: tms, source: dbo.Departments, destination: Departments }
       - { db: tms, source: dbo.Associations, destination: Associations }
       - { db: tms, source: dbo.Relationships, destination: Relationships }
+      - { db: tms, source: dbo.AltNums, destination: AltNums }
