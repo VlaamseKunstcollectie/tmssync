@@ -1656,9 +1656,6 @@ schema:
         SearchObjectNumber:
           name: SearchObjectNumber
           type: text
-        GSRowVersion:
-          name: GSRowVersion
-          type: text
         SortSearchNumber:
           name: SortSearchNumber
           type: text
@@ -1718,6 +1715,69 @@ schema:
           type: string
           attributes:
             - { length: 128 }
+    Associations:
+      primaryKey: tmsid
+      columns:
+        tmsid:
+          name: tmsid
+          type: integer
+          attributes:
+            - { unsigned: true }
+            - { autoincrement: true }
+            - { length: 64 }
+        AssociationID:
+          name: AssociationID
+          type: text
+        ID1:
+          name: ID1
+          type: text
+        ID2:
+          name: ID2
+          type: text
+        RelationshipID:
+          name: RelationshipID
+          type: text
+    Relationships:
+      primaryKey: tmsid
+      columns:
+        tmsid:
+          name: tmsid
+          type: integer
+          attributes:
+            - { unsigned: true }
+            - { autoincrement: true }
+            - { length: 64 }
+        Relation1:
+          name: Relation1
+          type: text
+        Relation2:
+          name: Relation2
+          type: text
+        RelationshipID:
+          name: RelationshipID
+          type: text
+    AltNums:
+      primaryKey: tmsid
+      columns:
+        tmsid:
+          name: tmsid
+          type: integer
+          attributes:
+            - { unsigned: true }
+            - { autoincrement: true }
+            - { length: 64 }
+        AltNum:
+          name: AltNum
+          type: text
+        AltNumID:
+          name: AltNumID
+          type: text
+        Description:
+          name: Description
+          type: text
+        ID:
+          name: ID
+          type: text
     CITvgsrpObjTombstoneD_RO:
       primaryKey: tmsid
       columns:

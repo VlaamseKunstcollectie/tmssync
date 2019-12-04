@@ -46,3 +46,6 @@ params:
       - { db: tms, source: dbo.TitleTypes, destination: TitleTypes }
       - { db: tms, source: dbo.CITvgsrpObjTombstoneD_RO, destination: CITvgsrpObjTombstoneD_RO }
       - { db: tms, source: dbo.Departments, destination: Departments }
+      - { db: tms, source: dbo.Associations, destination: Associations }
+      - { db: tms, source: dbo.Relationships, destination: Relationships }
+      - { db: tms, source: dbo.AltNums, destination: AltNums }
